@@ -18,6 +18,7 @@ target/classes/io/swagger/configuration/CustomInstantDeserializer$4.class
 target/classes/io/swagger/configuration/CustomInstantDeserializer$5.class
 target/classes/io/swagger/configuration/CustomInstantDeserializer$6.class
 target/classes/io/swagger/configuration/CustomInstantDeserializer$7.class
+target/classes/io/swagger/configuration/CustomInstantDeserializer$8.class
 target/classes/io/swagger/configuration/CustomInstantDeserializer$9.class
 target/classes/io/swagger/configuration/CustomInstantDeserializer$FromDecimalArguments.class
 target/classes/io/swagger/configuration/CustomInstantDeserializer$FromIntegerArguments.class
