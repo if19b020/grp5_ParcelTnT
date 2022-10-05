@@ -36,8 +36,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
+            <scope>provided</scope><!--other version-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,10 +67,10 @@
         </dependency>
 
         <!-- Bean Validation API support -->
-        <dependency>
+        <!--<dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-        </dependency>
+        </dependency>--><!--duplicate-->
 
         <dependency>
             <groupId>org.springframework.plugin</groupId>
