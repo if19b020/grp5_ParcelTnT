@@ -1,4 +1,4 @@
-package io.swagger.services.api;
+package io.swagger.services.impl;
 
 import io.swagger.persistence.NewParcelInfo;
 import io.swagger.persistence.Parcel;

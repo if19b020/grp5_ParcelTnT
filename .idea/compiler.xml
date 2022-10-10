@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="swagger-spring" />
         <module name="grp5_ParcelTnT" />
+        <module name="ParcelTracking" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ParcelTracking" options="-parameters" />
       <module name="grp5_ParcelTnT" options="-parameters" />
       <module name="swagger-spring" options="-parameters" />
     </option>
