@@ -8,5 +8,5 @@ public interface TransferwarehouseMapper {
     TransferwarehouseMapper INSTANCE = Mappers.getMapper(TransferwarehouseMapper.class);
 
     TransferwarehouseDto entityToDto(Transferwarehouse transferwarehouse);
-    Transferwarehouse DtoToEntity(TransferwarehouseDto Transferwarehouse);
+    Transferwarehouse DtoToEntity(TransferwarehouseDto transferwarehouse);
 }

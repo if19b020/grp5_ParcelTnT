@@ -8,6 +8,6 @@ import org.mapstruct.factory.Mappers;
 public interface GeoCoordinateMapper {
     GeoCoordinateMapper INSTANCE = Mappers.getMapper(GeoCoordinateMapper.class);
 
-    GeoCoordinateDto entityToDto(GeoCoordinate newParcelInfo);
+    GeoCoordinateDto entityToDto(GeoCoordinate geoCoordinate);
     GeoCoordinate DtoToEntity(GeoCoordinateDto geoCoordinate);
 }
