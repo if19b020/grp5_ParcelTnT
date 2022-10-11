@@ -19,6 +19,7 @@ public class WarehouseNextHops   {
   private Integer traveltimeMins = null;
 
   @JsonProperty("hop")
+  @NotNull
   private Hop hop = null;
 
   public WarehouseNextHops traveltimeMins(Integer traveltimeMins) {

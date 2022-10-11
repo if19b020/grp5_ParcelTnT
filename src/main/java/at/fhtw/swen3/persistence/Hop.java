@@ -28,9 +28,11 @@ public class Hop   {
   private String hopType = null;
 
   @JsonProperty("code")
+  @Pattern(regexp = "^[A-Z0-9]{9}$")
   private String code = null;
 
   @JsonProperty("description")
+  @Pattern(regexp = "^[A-Za-z]+[0-9-]+$")
   private String description = null;
 
   @JsonProperty("processingDelayMins")
@@ -40,6 +42,7 @@ public class Hop   {
   private String locationName = null;
 
   @JsonProperty("locationCoordinates")
+  @NotNull
   private GeoCoordinate locationCoordinates = null;
 
   public Hop hopType(String hopType) {
