@@ -1,8 +1,8 @@
 package at.fhtw.swen3.services.impl;
 
-import at.fhtw.swen3.persistence.NewParcelInfo;
-import at.fhtw.swen3.persistence.Parcel;
-import at.fhtw.swen3.persistence.TrackingInformation;
+import at.fhtw.swen3.persistence.entity.NewParcelInfo;
+import at.fhtw.swen3.persistence.entity.Parcel;
+import at.fhtw.swen3.persistence.entity.TrackingInformation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import at.fhtw.swen3.services.ParcelApi;
 import io.swagger.v3.oas.annotations.Parameter;
