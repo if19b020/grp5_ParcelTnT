@@ -12,5 +12,5 @@ public interface NewParcelInfoMapper {
 
     //@Mapping(source="trackingId",target="trackingId") //falls namen unterschiedlich
     NewParcelInfoDto entityToDto(NewParcelInfo newParcelInfo);
-    NewParcelInfo DtoToEntity(NewParcelInfoDto newParcelInfoDto);
+    NewParcelInfo dtoToEntity(NewParcelInfoDto newParcelInfoDto);
 }
