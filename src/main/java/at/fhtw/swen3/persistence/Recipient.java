@@ -16,15 +16,19 @@ import javax.validation.constraints.*;
 
 public class Recipient   {
   @JsonProperty("name")
+  @Pattern(regexp = "^[A-Z][A-Za-z-]+$")
   private String name = null;
 
   @JsonProperty("street")
+  @Pattern(regexp = "^[A-Za-z\\u00c4\\u00e4\\u00d6\\u00f6\\u00dc\\u00fc\\u00df]+\\s[0-9][A-Za-z0-9/]+$") // also match umlaut and ß
   private String street = null;
 
   @JsonProperty("postalCode")
+  @Pattern(regexp = "^A-[0-9]{4}$")
   private String postalCode = null;
 
   @JsonProperty("city")
+  @Pattern(regexp = "^[A-Z][A-Za-z]+$")
   private String city = null;
 
   @JsonProperty("country")

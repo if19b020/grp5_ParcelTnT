@@ -1,6 +1,8 @@
-package at.fhtw.swen3.persistence;
+package at.fhtw.swen3.persistence.entity;
 
 import java.util.Objects;
+
+import at.fhtw.swen3.persistence.HopArrival;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
