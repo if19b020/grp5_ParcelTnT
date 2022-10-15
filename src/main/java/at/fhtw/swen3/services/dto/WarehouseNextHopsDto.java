@@ -19,7 +19,6 @@ public class WarehouseNextHopsDto {
   private Integer traveltimeMins = null;
 
   @JsonProperty("hop")
-  @NotNull
   private HopDto hop = null;
 
   public WarehouseNextHopsDto traveltimeMins(Integer traveltimeMins) {

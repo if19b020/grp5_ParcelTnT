@@ -17,11 +17,9 @@ import javax.validation.constraints.*;
 
 public class HopArrivalDto {
   @JsonProperty("code")
-  @Pattern(regexp = "^[A-Z0-9]{9}$")
   private String code = null;
 
   @JsonProperty("description")
-  @Pattern(regexp = "^[A-Za-z]+[0-9-]+$")
   private String description = null;
 
   @JsonProperty("dateTime")

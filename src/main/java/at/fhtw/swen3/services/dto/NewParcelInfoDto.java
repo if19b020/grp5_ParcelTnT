@@ -16,7 +16,6 @@ import javax.validation.constraints.*;
 
 public class NewParcelInfoDto {
   @JsonProperty("trackingId")
-  @Pattern(regexp="^[A-Z0-9]{9}$")
   private String trackingId = null;
 
   public NewParcelInfoDto trackingId(String trackingId) {
@@ -29,8 +28,7 @@ public class NewParcelInfoDto {
    * @return trackingId
    **/
   @Schema(example = "PYJRB4HZ6", description = "The tracking ID of the parcel. ")
-  
-  @Pattern(regexp="^[A-Z0-9]{9}$")
+
   public String getTrackingId() {
     return trackingId;
   }

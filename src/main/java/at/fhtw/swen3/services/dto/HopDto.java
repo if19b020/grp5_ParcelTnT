@@ -28,11 +28,9 @@ public class HopDto {
   private String hopType = null;
 
   @JsonProperty("code")
-  @Pattern(regexp = "^[A-Z0-9]{9}$")
   private String code = null;
 
   @JsonProperty("description")
-  @Pattern(regexp = "^[A-Za-z]+[0-9-]+$")
   private String description = null;
 
   @JsonProperty("processingDelayMins")
@@ -42,7 +40,6 @@ public class HopDto {
   private String locationName = null;
 
   @JsonProperty("locationCoordinates")
-  @NotNull
   private GeoCoordinateDto locationCoordinates = null;
 
   public HopDto hopType(String hopType) {

@@ -22,7 +22,6 @@ public class WarehouseDto extends HopDto {
 
   @JsonProperty("nextHops")
   @Valid
-  @NotNull
   private List<WarehouseNextHopsDto> nextHops = new ArrayList<WarehouseNextHopsDto>();
 
   public WarehouseDto level(Integer level) {

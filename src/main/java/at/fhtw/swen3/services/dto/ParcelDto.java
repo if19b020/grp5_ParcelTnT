@@ -17,15 +17,12 @@ import javax.validation.constraints.*;
 
 public class ParcelDto {
   @JsonProperty("weight")
-  @Min(value = 1, message = "Weight must be greater than 0")
   private Float weight = null;
 
   @JsonProperty("recipient")
-  @NotNull
   private RecipientDto recipient = null;
 
   @JsonProperty("sender")
-  @NotNull
   private RecipientDto sender = null;
 
   public ParcelDto weight(Float weight) {
