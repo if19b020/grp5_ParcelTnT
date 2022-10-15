@@ -1,8 +1,8 @@
 package at.fhtw.swen3.services.impl;
 
-import at.fhtw.swen3.persistence.entity.NewParcelInfo;
-import at.fhtw.swen3.persistence.entity.Parcel;
-import at.fhtw.swen3.persistence.entity.TrackingInformation;
+import at.fhtw.swen3.services.dto.NewParcelInfoDto;
+import at.fhtw.swen3.services.dto.ParcelDto;
+import at.fhtw.swen3.services.dto.TrackingInformationDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import at.fhtw.swen3.services.ParcelApi;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -47,46 +47,46 @@ public class ParcelApiController implements ParcelApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<NewParcelInfo> submitParcel(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Parcel body) {
+    public ResponseEntity<NewParcelInfoDto> submitParcel(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody ParcelDto body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<NewParcelInfo>(objectMapper.readValue("{\n  \"trackingId\" : \"PYJRB4HZ6\"\n}", NewParcelInfo.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<NewParcelInfoDto>(objectMapper.readValue("{\n  \"trackingId\" : \"PYJRB4HZ6\"\n}", NewParcelInfoDto.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<NewParcelInfo>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<NewParcelInfoDto>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<NewParcelInfo>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<NewParcelInfoDto>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<TrackingInformation> trackParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId) {
+    public ResponseEntity<TrackingInformationDto> trackParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TrackingInformation>(objectMapper.readValue("{\n  \"visitedHops\" : [ {\n    \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\",\n    \"code\" : \"code\",\n    \"description\" : \"description\"\n  }, {\n    \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\",\n    \"code\" : \"code\",\n    \"description\" : \"description\"\n  } ],\n  \"futureHops\" : [ null, null ],\n  \"state\" : \"Pickup\"\n}", TrackingInformation.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<TrackingInformationDto>(objectMapper.readValue("{\n  \"visitedHops\" : [ {\n    \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\",\n    \"code\" : \"code\",\n    \"description\" : \"description\"\n  }, {\n    \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\",\n    \"code\" : \"code\",\n    \"description\" : \"description\"\n  } ],\n  \"futureHops\" : [ null, null ],\n  \"state\" : \"Pickup\"\n}", TrackingInformationDto.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<TrackingInformation>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<TrackingInformationDto>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<TrackingInformation>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<TrackingInformationDto>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<NewParcelInfo> transitionParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Parcel body) {
+    public ResponseEntity<NewParcelInfoDto> transitionParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody ParcelDto body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<NewParcelInfo>(objectMapper.readValue("{\n  \"trackingId\" : \"PYJRB4HZ6\"\n}", NewParcelInfo.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<NewParcelInfoDto>(objectMapper.readValue("{\n  \"trackingId\" : \"PYJRB4HZ6\"\n}", NewParcelInfoDto.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<NewParcelInfo>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<NewParcelInfoDto>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<NewParcelInfo>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<NewParcelInfoDto>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.NewParcelInfo;
 import at.fhtw.swen3.services.dto.NewParcelInfoDto;
+import at.fhtw.swen3.persistence.entity.NewParcelInfo;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -12,12 +12,12 @@ public class NewParcelInfoMapperTest {
 
     @Test
     public void entityToDto() {
-        NewParcelInfo newParcelInfo = new NewParcelInfo();
+        NewParcelInfoDto newParcelInfo = new NewParcelInfoDto();
         newParcelInfo.setTrackingId("1234");
         System.out.println(newParcelInfo);
 
         // AuthorMapper mapper = Mappers.getMapper(AuthorMapper.class);
-        NewParcelInfoDto newParcelInfoDto = NewParcelInfoMapper.INSTANCE.entityToDto(newParcelInfo);
+        NewParcelInfo newParcelInfoDto = NewParcelInfoMapper.INSTANCE.entityToDto(newParcelInfo);
 
         assertEquals( "1234", newParcelInfoDto.getTrackingId());
 
@@ -26,11 +26,11 @@ public class NewParcelInfoMapperTest {
 
     @Test
     public void dtoToEntity() {
-        NewParcelInfoDto newParcelInfoDto = new NewParcelInfoDto();
+        NewParcelInfo newParcelInfoDto = new NewParcelInfo();
         newParcelInfoDto.setTrackingId("1234");
         System.out.println(newParcelInfoDto);
 
-        NewParcelInfo newParcelInfo = NewParcelInfoMapper.INSTANCE.dtoToEntity(newParcelInfoDto);
+        NewParcelInfoDto newParcelInfo = NewParcelInfoMapper.INSTANCE.dtoToEntity(newParcelInfoDto);
 
         assertEquals( "1234", newParcelInfo.getTrackingId());
 
