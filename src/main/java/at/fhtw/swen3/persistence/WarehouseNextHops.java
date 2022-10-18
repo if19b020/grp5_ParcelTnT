@@ -1,11 +1,14 @@
 package at.fhtw.swen3.persistence;
 
-import at.fhtw.swen3.services.dto.HopDto;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
 public class WarehouseNextHops {
     private Integer traveltimeMins = null;
     @NotNull
-    private HopDto hop = null;
+    private Hop hop = null;
 }

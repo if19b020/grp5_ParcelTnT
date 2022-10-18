@@ -1,5 +1,10 @@
 package at.fhtw.swen3.persistence;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Transferwarehouse {
     private String regionGeoJson = null;
     private String logisticsPartner = null;

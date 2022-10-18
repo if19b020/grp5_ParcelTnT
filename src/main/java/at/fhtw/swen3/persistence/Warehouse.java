@@ -1,14 +1,17 @@
 package at.fhtw.swen3.persistence;
 
-import at.fhtw.swen3.services.dto.WarehouseNextHopsDto;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class Warehouse {
     private Integer level = null;
     @NotNull
-    private List<WarehouseNextHopsDto> nextHops = new ArrayList<WarehouseNextHopsDto>();
+    private List<WarehouseNextHops> nextHops = new ArrayList<WarehouseNextHops>();
 
 }

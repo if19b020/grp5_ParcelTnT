@@ -1,8 +1,12 @@
 package at.fhtw.swen3.persistence.entity;
 
+import at.fhtw.swen3.persistence.HopArrival;
+import at.fhtw.swen3.persistence.Recipient;
 import at.fhtw.swen3.services.dto.HopArrivalDto;
 import at.fhtw.swen3.services.dto.RecipientDto;
 import at.fhtw.swen3.services.dto.TrackingInformationDto;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,17 +22,36 @@ import java.util.List;
 @Getter
 @Setter
 public class ParcelEntity {
+
+    public enum StateEnum {
+        PICKUP("Pickup"),
+
+        INTRANSPORT("InTransport"),
+
+        INTRUCKDELIVERY("InTruckDelivery"),
+
+        TRANSFERRED("Transferred"),
+
+        DELIVERED("Delivered");
+
+        private String value;
+
+        StateEnum(String value) {
+            this.value = value;
+        }
+    }
+
     @Min(value = 1, message = "Weight must be greater than 0")
     private Float weight = null;
     @NotNull
-    private RecipientDto recipient = null;
+    private Recipient recipient = null;
     @NotNull
-    private RecipientDto sender = null;
+    private Recipient sender = null;
 
     @Pattern(regexp="^[A-Z0-9]{9}$")
     private String trackingId = null;
 
-    private TrackingInformationDto.StateEnum state = null;
-    private List<HopArrivalDto> visitedHops = new ArrayList<HopArrivalDto>();
-    private List<HopArrivalDto> futureHops = new ArrayList<HopArrivalDto>();
+    private StateEnum state = null;
+    private List<HopArrival> visitedHops = new ArrayList<HopArrival>();
+    private List<HopArrival> futureHops = new ArrayList<HopArrival>();
 }

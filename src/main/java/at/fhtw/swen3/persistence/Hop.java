@@ -1,10 +1,14 @@
 package at.fhtw.swen3.persistence;
 
 import at.fhtw.swen3.services.dto.GeoCoordinateDto;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+@Getter
+@Setter
 public class Hop {
     private String hopType = null;
     @Pattern(regexp = "^[A-Z0-9]{9}$")
@@ -14,5 +18,5 @@ public class Hop {
     private Integer processingDelayMins = null;
     private String locationName = null;
     @NotNull
-    private GeoCoordinateDto locationCoordinates = null;
+    private GeoCoordinate locationCoordinates = null;
 }
