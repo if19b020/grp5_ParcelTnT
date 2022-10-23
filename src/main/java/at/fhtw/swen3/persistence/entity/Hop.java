@@ -1,6 +1,5 @@
-package at.fhtw.swen3.persistence;
+package at.fhtw.swen3.persistence.entity;
 
-import at.fhtw.swen3.services.dto.GeoCoordinateDto;
 import lombok.Getter;
 import lombok.Setter;
 

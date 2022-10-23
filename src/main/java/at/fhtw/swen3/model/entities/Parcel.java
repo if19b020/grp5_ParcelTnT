@@ -1,20 +1,14 @@
-package at.fhtw.swen3.persistence.entity;
+package at.fhtw.swen3.model.entities;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
-/*
-* either all attributes from other classes (Parcel, NewParcelInfo, TrackingInformation (deleted))
-* or class that has all other classes
-* */
+
 @Getter
 @Setter
-public class ParcelEntity {
+public class Parcel {
 
     public enum StateEnum {
         PICKUP("Pickup"),
@@ -34,14 +28,10 @@ public class ParcelEntity {
         }
     }
 
-    @Min(value = 1, message = "Weight must be greater than 0")
     private Float weight = null;
-    @NotNull
-    private Recipient recipient = null;
-    @NotNull
+    private at.fhtw.swen3.persistence.entity.Recipient recipient = null;
     private Recipient sender = null;
 
-    @Pattern(regexp="^[A-Z0-9]{9}$")
     private String trackingId = null;
 
     private StateEnum state = null;

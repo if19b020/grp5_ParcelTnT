@@ -1,10 +1,9 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.HopArrival;
-import at.fhtw.swen3.persistence.Recipient;
+import at.fhtw.swen3.persistence.entity.HopArrival;
+import at.fhtw.swen3.persistence.entity.Recipient;
 import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.services.dto.*;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.threeten.bp.OffsetDateTime;

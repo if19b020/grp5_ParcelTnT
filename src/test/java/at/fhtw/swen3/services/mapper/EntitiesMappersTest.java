@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.*;
-import at.fhtw.swen3.persistence.Error;
+import at.fhtw.swen3.persistence.entity.*;
+import at.fhtw.swen3.persistence.entity.Error;
 import at.fhtw.swen3.services.dto.*;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;

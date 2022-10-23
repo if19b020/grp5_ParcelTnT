@@ -1,4 +1,4 @@
-package at.fhtw.swen3.persistence;
+package at.fhtw.swen3.model.entities;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.Error;
+import at.fhtw.swen3.persistence.entity.Error;
 import at.fhtw.swen3.services.dto.ErrorDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
