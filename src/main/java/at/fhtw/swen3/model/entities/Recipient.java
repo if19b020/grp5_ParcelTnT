@@ -3,22 +3,22 @@ package at.fhtw.swen3.model.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 public class Recipient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column
     private String name = null;
-    @Column
+    //@Column
     private String street = null;
-    @Column
+    //@Column
     private String postalCode = null;
-    @Column
+    //@Column
     private String city = null;
-    @Column
+    //@Column
     private String country = null;
 }
