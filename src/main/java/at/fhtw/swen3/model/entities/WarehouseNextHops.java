@@ -15,6 +15,7 @@ public class WarehouseNextHops {
     private Integer traveltimeMins = null;
 
     //@OneToOne
+
     //@JoinColumn(name = "hop_hop_type")
     private Hop hop = null;
 }
