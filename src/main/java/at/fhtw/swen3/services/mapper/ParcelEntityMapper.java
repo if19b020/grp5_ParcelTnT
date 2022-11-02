@@ -12,13 +12,13 @@ import org.mapstruct.factory.Mappers;
 public interface ParcelEntityMapper {
     ParcelEntityMapper INSTANCE = Mappers.getMapper(ParcelEntityMapper.class);
 
-    @Mapping(source = "parcelDto.weight", target = "weight")
-    @Mapping(source = "parcelDto.recipient", target = "recipient")
-    @Mapping(source = "parcelDto.sender", target = "sender")
-    @Mapping(source = "newParcelInfoDto.trackingId", target = "trackingId")
-    @Mapping(source = "trackingInformationDto.state", target = "state")
-    @Mapping(source = "trackingInformationDto.visitedHops", target = "visitedHops")
-    @Mapping(source = "trackingInformationDto.futureHops", target = "futureHops")
+    @Mapping(source = "parcel.weight", target = "weight")
+    @Mapping(source = "parcel.recipient", target = "recipient")
+    @Mapping(source = "parcel.sender", target = "sender")
+    @Mapping(source = "newParcelInfo.trackingId", target = "trackingId")
+    @Mapping(source = "trackingInformation.state", target = "state")
+    @Mapping(source = "trackingInformation.visitedHops", target = "visitedHops")
+    @Mapping(source = "trackingInformation.futureHops", target = "futureHops")
     ParcelEntity dtoToEntity(Parcel parcel, NewParcelInfo newParcelInfo, TrackingInformation trackingInformation);
     Parcel entityToParcelDto(ParcelEntity parcelEntity);
     NewParcelInfo entityToNewParcelInfoDto(ParcelEntity parcelEntity);
