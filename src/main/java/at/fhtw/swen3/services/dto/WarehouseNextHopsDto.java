@@ -14,14 +14,14 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class WarehouseNextHops {
+public class WarehouseNextHopsDto {
   @JsonProperty("traveltimeMins")
   private Integer traveltimeMins = null;
 
   @JsonProperty("hop")
-  private Hop hop = null;
+  private HopDto hop = null;
 
-  public WarehouseNextHops traveltimeMins(Integer traveltimeMins) {
+  public WarehouseNextHopsDto traveltimeMins(Integer traveltimeMins) {
     this.traveltimeMins = traveltimeMins;
     return this;
   }
@@ -41,7 +41,7 @@ public class WarehouseNextHops {
     this.traveltimeMins = traveltimeMins;
   }
 
-  public WarehouseNextHops hop(Hop hop) {
+  public WarehouseNextHopsDto hop(HopDto hop) {
     this.hop = hop;
     return this;
   }
@@ -54,11 +54,11 @@ public class WarehouseNextHops {
       @NotNull
 
     @Valid
-    public Hop getHop() {
+    public HopDto getHop() {
     return hop;
   }
 
-  public void setHop(Hop hop) {
+  public void setHop(HopDto hop) {
     this.hop = hop;
   }
 
@@ -71,7 +71,7 @@ public class WarehouseNextHops {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WarehouseNextHops warehouseNextHops = (WarehouseNextHops) o;
+    WarehouseNextHopsDto warehouseNextHops = (WarehouseNextHopsDto) o;
     return Objects.equals(this.traveltimeMins, warehouseNextHops.traveltimeMins) &&
         Objects.equals(this.hop, warehouseNextHops.hop);
   }
