@@ -1,17 +1,18 @@
 package at.fhtw.swen3.services.mapper;
 
 import at.fhtw.swen3.persistence.entity.Transferwarehouse;
+import at.fhtw.swen3.services.dto.TransferwarehouseDto;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:26:22+0100",
+    date = "2022-11-02T20:24:21+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
 
     @Override
-    public Transferwarehouse dtoToEntity(at.fhtw.swen3.services.dto.Transferwarehouse transferwarehouseDto) {
+    public Transferwarehouse dtoToEntity(TransferwarehouseDto transferwarehouseDto) {
         if ( transferwarehouseDto == null ) {
             return null;
         }
@@ -26,17 +27,17 @@ public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
     }
 
     @Override
-    public at.fhtw.swen3.services.dto.Transferwarehouse entityToDto(Transferwarehouse transferwarehouse) {
+    public TransferwarehouseDto entityToDto(Transferwarehouse transferwarehouse) {
         if ( transferwarehouse == null ) {
             return null;
         }
 
-        at.fhtw.swen3.services.dto.Transferwarehouse transferwarehouse1 = new at.fhtw.swen3.services.dto.Transferwarehouse();
+        TransferwarehouseDto transferwarehouseDto = new TransferwarehouseDto();
 
-        transferwarehouse1.setRegionGeoJson( transferwarehouse.getRegionGeoJson() );
-        transferwarehouse1.setLogisticsPartner( transferwarehouse.getLogisticsPartner() );
-        transferwarehouse1.setLogisticsPartnerUrl( transferwarehouse.getLogisticsPartnerUrl() );
+        transferwarehouseDto.setRegionGeoJson( transferwarehouse.getRegionGeoJson() );
+        transferwarehouseDto.setLogisticsPartner( transferwarehouse.getLogisticsPartner() );
+        transferwarehouseDto.setLogisticsPartnerUrl( transferwarehouse.getLogisticsPartnerUrl() );
 
-        return transferwarehouse1;
+        return transferwarehouseDto;
     }
 }

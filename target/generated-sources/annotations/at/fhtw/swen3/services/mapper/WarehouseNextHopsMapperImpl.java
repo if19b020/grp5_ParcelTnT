@@ -1,102 +1,105 @@
 package at.fhtw.swen3.services.mapper;
 
+import at.fhtw.swen3.persistence.entity.GeoCoordinate;
 import at.fhtw.swen3.persistence.entity.Hop;
-import at.fhtw.swen3.services.dto.GeoCoordinate;
-import at.fhtw.swen3.services.dto.WarehouseNextHops;
+import at.fhtw.swen3.persistence.entity.WarehouseNextHops;
+import at.fhtw.swen3.services.dto.GeoCoordinateDto;
+import at.fhtw.swen3.services.dto.HopDto;
+import at.fhtw.swen3.services.dto.WarehouseNextHopsDto;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:26:22+0100",
+    date = "2022-11-02T20:24:21+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
 
     @Override
-    public at.fhtw.swen3.persistence.entity.WarehouseNextHops dtoToEntity(WarehouseNextHops warehouseNextHopsDto) {
+    public WarehouseNextHops dtoToEntity(WarehouseNextHopsDto warehouseNextHopsDto) {
         if ( warehouseNextHopsDto == null ) {
             return null;
         }
 
-        at.fhtw.swen3.persistence.entity.WarehouseNextHops warehouseNextHops = new at.fhtw.swen3.persistence.entity.WarehouseNextHops();
+        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
 
         warehouseNextHops.setTraveltimeMins( warehouseNextHopsDto.getTraveltimeMins() );
-        warehouseNextHops.setHop( hopToHop( warehouseNextHopsDto.getHop() ) );
+        warehouseNextHops.setHop( hopDtoToHop( warehouseNextHopsDto.getHop() ) );
 
         return warehouseNextHops;
     }
 
     @Override
-    public WarehouseNextHops entityToDto(at.fhtw.swen3.persistence.entity.WarehouseNextHops warehouseNextHops) {
+    public WarehouseNextHopsDto entityToDto(WarehouseNextHops warehouseNextHops) {
         if ( warehouseNextHops == null ) {
             return null;
         }
 
-        WarehouseNextHops warehouseNextHops1 = new WarehouseNextHops();
+        WarehouseNextHopsDto warehouseNextHopsDto = new WarehouseNextHopsDto();
 
-        warehouseNextHops1.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
-        warehouseNextHops1.setHop( hopToHop1( warehouseNextHops.getHop() ) );
+        warehouseNextHopsDto.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
+        warehouseNextHopsDto.setHop( hopToHopDto( warehouseNextHops.getHop() ) );
 
-        return warehouseNextHops1;
+        return warehouseNextHopsDto;
     }
 
-    protected at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinateToGeoCoordinate(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinate geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
+        if ( geoCoordinateDto == null ) {
+            return null;
+        }
+
+        GeoCoordinate geoCoordinate = new GeoCoordinate();
+
+        geoCoordinate.setLat( geoCoordinateDto.getLat() );
+        geoCoordinate.setLon( geoCoordinateDto.getLon() );
+
+        return geoCoordinate;
+    }
+
+    protected Hop hopDtoToHop(HopDto hopDto) {
+        if ( hopDto == null ) {
+            return null;
+        }
+
+        Hop hop = new Hop();
+
+        hop.setHopType( hopDto.getHopType() );
+        hop.setCode( hopDto.getCode() );
+        hop.setDescription( hopDto.getDescription() );
+        hop.setProcessingDelayMins( hopDto.getProcessingDelayMins() );
+        hop.setLocationName( hopDto.getLocationName() );
+        hop.setLocationCoordinates( geoCoordinateDtoToGeoCoordinate( hopDto.getLocationCoordinates() ) );
+
+        return hop;
+    }
+
+    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinate geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
 
-        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate1 = new at.fhtw.swen3.persistence.entity.GeoCoordinate();
+        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
 
-        geoCoordinate1.setLat( geoCoordinate.getLat() );
-        geoCoordinate1.setLon( geoCoordinate.getLon() );
+        geoCoordinateDto.setLat( geoCoordinate.getLat() );
+        geoCoordinateDto.setLon( geoCoordinate.getLon() );
 
-        return geoCoordinate1;
+        return geoCoordinateDto;
     }
 
-    protected Hop hopToHop(at.fhtw.swen3.services.dto.Hop hop) {
+    protected HopDto hopToHopDto(Hop hop) {
         if ( hop == null ) {
             return null;
         }
 
-        Hop hop1 = new Hop();
+        HopDto hopDto = new HopDto();
 
-        hop1.setHopType( hop.getHopType() );
-        hop1.setCode( hop.getCode() );
-        hop1.setDescription( hop.getDescription() );
-        hop1.setProcessingDelayMins( hop.getProcessingDelayMins() );
-        hop1.setLocationName( hop.getLocationName() );
-        hop1.setLocationCoordinates( geoCoordinateToGeoCoordinate( hop.getLocationCoordinates() ) );
+        hopDto.setHopType( hop.getHopType() );
+        hopDto.setCode( hop.getCode() );
+        hopDto.setDescription( hop.getDescription() );
+        hopDto.setProcessingDelayMins( hop.getProcessingDelayMins() );
+        hopDto.setLocationName( hop.getLocationName() );
+        hopDto.setLocationCoordinates( geoCoordinateToGeoCoordinateDto( hop.getLocationCoordinates() ) );
 
-        return hop1;
-    }
-
-    protected GeoCoordinate geoCoordinateToGeoCoordinate1(at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate) {
-        if ( geoCoordinate == null ) {
-            return null;
-        }
-
-        GeoCoordinate geoCoordinate1 = new GeoCoordinate();
-
-        geoCoordinate1.setLat( geoCoordinate.getLat() );
-        geoCoordinate1.setLon( geoCoordinate.getLon() );
-
-        return geoCoordinate1;
-    }
-
-    protected at.fhtw.swen3.services.dto.Hop hopToHop1(Hop hop) {
-        if ( hop == null ) {
-            return null;
-        }
-
-        at.fhtw.swen3.services.dto.Hop hop1 = new at.fhtw.swen3.services.dto.Hop();
-
-        hop1.setHopType( hop.getHopType() );
-        hop1.setCode( hop.getCode() );
-        hop1.setDescription( hop.getDescription() );
-        hop1.setProcessingDelayMins( hop.getProcessingDelayMins() );
-        hop1.setLocationName( hop.getLocationName() );
-        hop1.setLocationCoordinates( geoCoordinateToGeoCoordinate1( hop.getLocationCoordinates() ) );
-
-        return hop1;
+        return hopDto;
     }
 }

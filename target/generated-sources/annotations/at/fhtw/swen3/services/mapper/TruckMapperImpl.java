@@ -1,17 +1,18 @@
 package at.fhtw.swen3.services.mapper;
 
 import at.fhtw.swen3.persistence.entity.Truck;
+import at.fhtw.swen3.services.dto.TruckDto;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:26:22+0100",
+    date = "2022-11-02T20:24:22+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class TruckMapperImpl implements TruckMapper {
 
     @Override
-    public Truck dtoToEntity(at.fhtw.swen3.services.dto.Truck truckDto) {
+    public Truck dtoToEntity(TruckDto truckDto) {
         if ( truckDto == null ) {
             return null;
         }
@@ -25,16 +26,16 @@ public class TruckMapperImpl implements TruckMapper {
     }
 
     @Override
-    public at.fhtw.swen3.services.dto.Truck entityToDto(Truck truck) {
+    public TruckDto entityToDto(Truck truck) {
         if ( truck == null ) {
             return null;
         }
 
-        at.fhtw.swen3.services.dto.Truck truck1 = new at.fhtw.swen3.services.dto.Truck();
+        TruckDto truckDto = new TruckDto();
 
-        truck1.setRegionGeoJson( truck.getRegionGeoJson() );
-        truck1.setNumberPlate( truck.getNumberPlate() );
+        truckDto.setRegionGeoJson( truck.getRegionGeoJson() );
+        truckDto.setNumberPlate( truck.getNumberPlate() );
 
-        return truck1;
+        return truckDto;
     }
 }

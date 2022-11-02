@@ -1,18 +1,20 @@
 package at.fhtw.swen3.services.mapper;
 
+import at.fhtw.swen3.persistence.entity.GeoCoordinate;
 import at.fhtw.swen3.persistence.entity.Hop;
-import at.fhtw.swen3.services.dto.GeoCoordinate;
+import at.fhtw.swen3.services.dto.GeoCoordinateDto;
+import at.fhtw.swen3.services.dto.HopDto;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:26:22+0100",
+    date = "2022-11-02T20:24:21+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class HopMapperImpl implements HopMapper {
 
     @Override
-    public Hop dtoToEntity(at.fhtw.swen3.services.dto.Hop hop) {
+    public Hop dtoToEntity(HopDto hop) {
         if ( hop == null ) {
             return null;
         }
@@ -24,52 +26,52 @@ public class HopMapperImpl implements HopMapper {
         hop1.setDescription( hop.getDescription() );
         hop1.setProcessingDelayMins( hop.getProcessingDelayMins() );
         hop1.setLocationName( hop.getLocationName() );
-        hop1.setLocationCoordinates( geoCoordinateToGeoCoordinate( hop.getLocationCoordinates() ) );
+        hop1.setLocationCoordinates( geoCoordinateDtoToGeoCoordinate( hop.getLocationCoordinates() ) );
 
         return hop1;
     }
 
     @Override
-    public at.fhtw.swen3.services.dto.Hop entityToDto(Hop hop) {
+    public HopDto entityToDto(Hop hop) {
         if ( hop == null ) {
             return null;
         }
 
-        at.fhtw.swen3.services.dto.Hop hop1 = new at.fhtw.swen3.services.dto.Hop();
+        HopDto hopDto = new HopDto();
 
-        hop1.setHopType( hop.getHopType() );
-        hop1.setCode( hop.getCode() );
-        hop1.setDescription( hop.getDescription() );
-        hop1.setProcessingDelayMins( hop.getProcessingDelayMins() );
-        hop1.setLocationName( hop.getLocationName() );
-        hop1.setLocationCoordinates( geoCoordinateToGeoCoordinate1( hop.getLocationCoordinates() ) );
+        hopDto.setHopType( hop.getHopType() );
+        hopDto.setCode( hop.getCode() );
+        hopDto.setDescription( hop.getDescription() );
+        hopDto.setProcessingDelayMins( hop.getProcessingDelayMins() );
+        hopDto.setLocationName( hop.getLocationName() );
+        hopDto.setLocationCoordinates( geoCoordinateToGeoCoordinateDto( hop.getLocationCoordinates() ) );
 
-        return hop1;
+        return hopDto;
     }
 
-    protected at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinateToGeoCoordinate(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinate geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
+        if ( geoCoordinateDto == null ) {
+            return null;
+        }
+
+        GeoCoordinate geoCoordinate = new GeoCoordinate();
+
+        geoCoordinate.setLat( geoCoordinateDto.getLat() );
+        geoCoordinate.setLon( geoCoordinateDto.getLon() );
+
+        return geoCoordinate;
+    }
+
+    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinate geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
 
-        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate1 = new at.fhtw.swen3.persistence.entity.GeoCoordinate();
+        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
 
-        geoCoordinate1.setLat( geoCoordinate.getLat() );
-        geoCoordinate1.setLon( geoCoordinate.getLon() );
+        geoCoordinateDto.setLat( geoCoordinate.getLat() );
+        geoCoordinateDto.setLon( geoCoordinate.getLon() );
 
-        return geoCoordinate1;
-    }
-
-    protected GeoCoordinate geoCoordinateToGeoCoordinate1(at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate) {
-        if ( geoCoordinate == null ) {
-            return null;
-        }
-
-        GeoCoordinate geoCoordinate1 = new GeoCoordinate();
-
-        geoCoordinate1.setLat( geoCoordinate.getLat() );
-        geoCoordinate1.setLon( geoCoordinate.getLon() );
-
-        return geoCoordinate1;
+        return geoCoordinateDto;
     }
 }

@@ -1,31 +1,18 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.services.dto.GeoCoordinate;
+import at.fhtw.swen3.persistence.entity.GeoCoordinate;
+import at.fhtw.swen3.services.dto.GeoCoordinateDto;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:26:22+0100",
+    date = "2022-11-02T20:24:22+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class GeoCoordinateMapperImpl implements GeoCoordinateMapper {
 
     @Override
-    public at.fhtw.swen3.persistence.entity.GeoCoordinate dtoToEntity(GeoCoordinate geoCoordinate) {
-        if ( geoCoordinate == null ) {
-            return null;
-        }
-
-        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate1 = new at.fhtw.swen3.persistence.entity.GeoCoordinate();
-
-        geoCoordinate1.setLat( geoCoordinate.getLat() );
-        geoCoordinate1.setLon( geoCoordinate.getLon() );
-
-        return geoCoordinate1;
-    }
-
-    @Override
-    public GeoCoordinate entityToDto(at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate) {
+    public GeoCoordinate dtoToEntity(GeoCoordinateDto geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
@@ -36,5 +23,19 @@ public class GeoCoordinateMapperImpl implements GeoCoordinateMapper {
         geoCoordinate1.setLon( geoCoordinate.getLon() );
 
         return geoCoordinate1;
+    }
+
+    @Override
+    public GeoCoordinateDto entityToDto(GeoCoordinate geoCoordinate) {
+        if ( geoCoordinate == null ) {
+            return null;
+        }
+
+        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+
+        geoCoordinateDto.setLat( geoCoordinate.getLat() );
+        geoCoordinateDto.setLon( geoCoordinate.getLon() );
+
+        return geoCoordinateDto;
     }
 }
