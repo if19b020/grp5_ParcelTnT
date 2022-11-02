@@ -3,103 +3,104 @@ package at.fhtw.swen3.services.mapper;
 import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
 import at.fhtw.swen3.persistence.entity.HopEntity;
 import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
-import at.fhtw.swen3.services.dto.GeoCoordinateDto;
-import at.fhtw.swen3.services.dto.HopDto;
-import at.fhtw.swen3.services.dto.WarehouseNextHopsDto;
+import at.fhtw.swen3.services.dto.GeoCoordinate;
+import at.fhtw.swen3.services.dto.Hop;
+import at.fhtw.swen3.services.dto.WarehouseNextHops;
+
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:38:04+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
+    date = "2022-11-02T20:59:40+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
 
     @Override
-    public WarehouseNextHopsEntity dtoToEntity(WarehouseNextHopsDto warehouseNextHopsDto) {
-        if ( warehouseNextHopsDto == null ) {
-            return null;
-        }
-
-        WarehouseNextHopsEntity warehouseNextHops = new WarehouseNextHopsEntity();
-
-        warehouseNextHops.setTraveltimeMins( warehouseNextHopsDto.getTraveltimeMins() );
-        warehouseNextHops.setHop( hopDtoToHop( warehouseNextHopsDto.getHop() ) );
-
-        return warehouseNextHops;
-    }
-
-    @Override
-    public WarehouseNextHopsDto entityToDto(WarehouseNextHopsEntity warehouseNextHops) {
+    public WarehouseNextHopsEntity dtoToEntity(WarehouseNextHops warehouseNextHops) {
         if ( warehouseNextHops == null ) {
             return null;
         }
 
-        WarehouseNextHopsDto warehouseNextHopsDto = new WarehouseNextHopsDto();
+        WarehouseNextHopsEntity warehouseNextHopsEntity = new WarehouseNextHopsEntity();
+
+        warehouseNextHopsEntity.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
+        warehouseNextHopsEntity.setHop( hopDtoToHopEntity( warehouseNextHops.getHop() ) );
+
+        return warehouseNextHopsEntity;
+    }
+
+    @Override
+    public WarehouseNextHops entityToDto(WarehouseNextHopsEntity warehouseNextHops) {
+        if ( warehouseNextHops == null ) {
+            return null;
+        }
+
+        WarehouseNextHops warehouseNextHopsDto = new WarehouseNextHops();
 
         warehouseNextHopsDto.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
-        warehouseNextHopsDto.setHop( hopToHopDto( warehouseNextHops.getHop() ) );
+        warehouseNextHopsDto.setHop( hopEntityToHopDto( warehouseNextHops.getHop() ) );
 
         return warehouseNextHopsDto;
     }
 
-    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
-        if ( geoCoordinateDto == null ) {
-            return null;
-        }
-
-        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
-
-        geoCoordinate.setLat( geoCoordinateDto.getLat() );
-        geoCoordinate.setLon( geoCoordinateDto.getLon() );
-
-        return geoCoordinate;
-    }
-
-    protected HopEntity hopDtoToHop(HopDto hopDto) {
-        if ( hopDto == null ) {
-            return null;
-        }
-
-        HopEntity hop = new HopEntity();
-
-        hop.setHopType( hopDto.getHopType() );
-        hop.setCode( hopDto.getCode() );
-        hop.setDescription( hopDto.getDescription() );
-        hop.setProcessingDelayMins( hopDto.getProcessingDelayMins() );
-        hop.setLocationName( hopDto.getLocationName() );
-        hop.setLocationCoordinates( geoCoordinateDtoToGeoCoordinate( hopDto.getLocationCoordinates() ) );
-
-        return hop;
-    }
-
-    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinateEntity geoCoordinate) {
+    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
 
-        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+        GeoCoordinateEntity geoCoordinateEntity = new GeoCoordinateEntity();
 
-        geoCoordinateDto.setLat( geoCoordinate.getLat() );
-        geoCoordinateDto.setLon( geoCoordinate.getLon() );
+        geoCoordinateEntity.setLat( geoCoordinate.getLat() );
+        geoCoordinateEntity.setLon( geoCoordinate.getLon() );
 
-        return geoCoordinateDto;
+        return geoCoordinateEntity;
     }
 
-    protected HopDto hopToHopDto(HopEntity hop) {
+    protected HopEntity hopDtoToHopEntity(Hop hop) {
         if ( hop == null ) {
             return null;
         }
 
-        HopDto hopDto = new HopDto();
+        HopEntity hopEntity = new HopEntity();
 
-        hopDto.setHopType( hop.getHopType() );
-        hopDto.setCode( hop.getCode() );
-        hopDto.setDescription( hop.getDescription() );
-        hopDto.setProcessingDelayMins( hop.getProcessingDelayMins() );
-        hopDto.setLocationName( hop.getLocationName() );
-        hopDto.setLocationCoordinates( geoCoordinateToGeoCoordinateDto( hop.getLocationCoordinates() ) );
+        hopEntity.setHopType( hop.getHopType() );
+        hopEntity.setCode( hop.getCode() );
+        hopEntity.setDescription( hop.getDescription() );
+        hopEntity.setProcessingDelayMins( hop.getProcessingDelayMins() );
+        hopEntity.setLocationName( hop.getLocationName() );
+        hopEntity.setLocationCoordinates( geoCoordinateDtoToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
 
-        return hopDto;
+        return hopEntity;
+    }
+
+    protected GeoCoordinate geoCoordinateEntityToGeoCoordinateDto(GeoCoordinateEntity geoCoordinateEntity) {
+        if ( geoCoordinateEntity == null ) {
+            return null;
+        }
+
+        GeoCoordinate geoCoordinate = new GeoCoordinate();
+
+        geoCoordinate.setLat( geoCoordinateEntity.getLat() );
+        geoCoordinate.setLon( geoCoordinateEntity.getLon() );
+
+        return geoCoordinate;
+    }
+
+    protected Hop hopEntityToHopDto(HopEntity hopEntity) {
+        if ( hopEntity == null ) {
+            return null;
+        }
+
+        Hop hop = new Hop();
+
+        hop.setHopType( hopEntity.getHopType() );
+        hop.setCode( hopEntity.getCode() );
+        hop.setDescription( hopEntity.getDescription() );
+        hop.setProcessingDelayMins( hopEntity.getProcessingDelayMins() );
+        hop.setLocationName( hopEntity.getLocationName() );
+        hop.setLocationCoordinates( geoCoordinateEntityToGeoCoordinateDto( hopEntity.getLocationCoordinates() ) );
+
+        return hop;
     }
 }

@@ -1,37 +1,38 @@
 package at.fhtw.swen3.services.mapper;
 
 import at.fhtw.swen3.persistence.entity.TruckEntity;
-import at.fhtw.swen3.services.dto.TruckDto;
+import at.fhtw.swen3.services.dto.Truck;
+
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:38:03+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
+    date = "2022-11-02T20:59:40+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class TruckMapperImpl implements TruckMapper {
 
     @Override
-    public TruckEntity dtoToEntity(TruckDto truckDto) {
+    public TruckEntity dtoToEntity(Truck truckDto) {
         if ( truckDto == null ) {
             return null;
         }
 
-        TruckEntity truck = new TruckEntity();
+        TruckEntity truckEntity = new TruckEntity();
 
-        truck.setRegionGeoJson( truckDto.getRegionGeoJson() );
-        truck.setNumberPlate( truckDto.getNumberPlate() );
+        truckEntity.setRegionGeoJson( truckDto.getRegionGeoJson() );
+        truckEntity.setNumberPlate( truckDto.getNumberPlate() );
 
-        return truck;
+        return truckEntity;
     }
 
     @Override
-    public TruckDto entityToDto(TruckEntity truck) {
+    public Truck entityToDto(TruckEntity truck) {
         if ( truck == null ) {
             return null;
         }
 
-        TruckDto truckDto = new TruckDto();
+        Truck truckDto = new Truck();
 
         truckDto.setRegionGeoJson( truck.getRegionGeoJson() );
         truckDto.setNumberPlate( truck.getNumberPlate() );

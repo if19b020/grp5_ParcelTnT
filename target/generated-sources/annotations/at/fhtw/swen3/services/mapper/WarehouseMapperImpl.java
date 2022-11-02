@@ -4,156 +4,157 @@ import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
 import at.fhtw.swen3.persistence.entity.HopEntity;
 import at.fhtw.swen3.persistence.entity.WarehouseEntity;
 import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
-import at.fhtw.swen3.services.dto.GeoCoordinateDto;
-import at.fhtw.swen3.services.dto.HopDto;
-import at.fhtw.swen3.services.dto.WarehouseDto;
-import at.fhtw.swen3.services.dto.WarehouseNextHopsDto;
+import at.fhtw.swen3.services.dto.GeoCoordinate;
+import at.fhtw.swen3.services.dto.Hop;
+import at.fhtw.swen3.services.dto.Warehouse;
+import at.fhtw.swen3.services.dto.WarehouseNextHops;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:38:03+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
+    date = "2022-11-02T20:59:40+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class WarehouseMapperImpl implements WarehouseMapper {
 
     @Override
-    public WarehouseEntity dtoToEntity(WarehouseDto warehouseDto) {
+    public WarehouseEntity dtoToEntity(Warehouse warehouseDto) {
         if ( warehouseDto == null ) {
             return null;
         }
 
-        WarehouseEntity warehouse = new WarehouseEntity();
+        WarehouseEntity warehouseEntity = new WarehouseEntity();
 
-        warehouse.setLevel( warehouseDto.getLevel() );
-        warehouse.setNextHops( warehouseNextHopsDtoListToWarehouseNextHopsList( warehouseDto.getNextHops() ) );
+        warehouseEntity.setLevel( warehouseDto.getLevel() );
+        warehouseEntity.setNextHops( warehouseNextHopsDtoListToWarehouseNextHopsEntityList( warehouseDto.getNextHops() ) );
 
-        return warehouse;
+        return warehouseEntity;
     }
 
     @Override
-    public WarehouseDto entityToDto(WarehouseEntity warehouse) {
+    public Warehouse entityToDto(WarehouseEntity warehouse) {
         if ( warehouse == null ) {
             return null;
         }
 
-        WarehouseDto warehouseDto = new WarehouseDto();
+        Warehouse warehouseDto = new Warehouse();
 
         warehouseDto.setLevel( warehouse.getLevel() );
-        warehouseDto.setNextHops( warehouseNextHopsListToWarehouseNextHopsDtoList( warehouse.getNextHops() ) );
+        warehouseDto.setNextHops( warehouseNextHopsEntityListToWarehouseNextHopsDtoList( warehouse.getNextHops() ) );
 
         return warehouseDto;
     }
 
-    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
-        if ( geoCoordinateDto == null ) {
+    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
+        if ( geoCoordinate == null ) {
             return null;
         }
 
-        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
+        GeoCoordinateEntity geoCoordinateEntity = new GeoCoordinateEntity();
 
-        geoCoordinate.setLat( geoCoordinateDto.getLat() );
-        geoCoordinate.setLon( geoCoordinateDto.getLon() );
+        geoCoordinateEntity.setLat( geoCoordinate.getLat() );
+        geoCoordinateEntity.setLon( geoCoordinate.getLon() );
 
-        return geoCoordinate;
+        return geoCoordinateEntity;
     }
 
-    protected HopEntity hopDtoToHop(HopDto hopDto) {
-        if ( hopDto == null ) {
+    protected HopEntity hopDtoToHopEntity(Hop hop) {
+        if ( hop == null ) {
             return null;
         }
 
-        HopEntity hop = new HopEntity();
+        HopEntity hopEntity = new HopEntity();
 
-        hop.setHopType( hopDto.getHopType() );
-        hop.setCode( hopDto.getCode() );
-        hop.setDescription( hopDto.getDescription() );
-        hop.setProcessingDelayMins( hopDto.getProcessingDelayMins() );
-        hop.setLocationName( hopDto.getLocationName() );
-        hop.setLocationCoordinates( geoCoordinateDtoToGeoCoordinate( hopDto.getLocationCoordinates() ) );
+        hopEntity.setHopType( hop.getHopType() );
+        hopEntity.setCode( hop.getCode() );
+        hopEntity.setDescription( hop.getDescription() );
+        hopEntity.setProcessingDelayMins( hop.getProcessingDelayMins() );
+        hopEntity.setLocationName( hop.getLocationName() );
+        hopEntity.setLocationCoordinates( geoCoordinateDtoToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
 
-        return hop;
+        return hopEntity;
     }
 
-    protected WarehouseNextHopsEntity warehouseNextHopsDtoToWarehouseNextHops(WarehouseNextHopsDto warehouseNextHopsDto) {
-        if ( warehouseNextHopsDto == null ) {
+    protected WarehouseNextHopsEntity warehouseNextHopsDtoToWarehouseNextHopsEntity(WarehouseNextHops warehouseNextHops) {
+        if ( warehouseNextHops == null ) {
             return null;
         }
 
-        WarehouseNextHopsEntity warehouseNextHops = new WarehouseNextHopsEntity();
+        WarehouseNextHopsEntity warehouseNextHopsEntity = new WarehouseNextHopsEntity();
 
-        warehouseNextHops.setTraveltimeMins( warehouseNextHopsDto.getTraveltimeMins() );
-        warehouseNextHops.setHop( hopDtoToHop( warehouseNextHopsDto.getHop() ) );
+        warehouseNextHopsEntity.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
+        warehouseNextHopsEntity.setHop( hopDtoToHopEntity( warehouseNextHops.getHop() ) );
 
-        return warehouseNextHops;
+        return warehouseNextHopsEntity;
     }
 
-    protected List<WarehouseNextHopsEntity> warehouseNextHopsDtoListToWarehouseNextHopsList(List<WarehouseNextHopsDto> list) {
+    protected List<WarehouseNextHopsEntity> warehouseNextHopsDtoListToWarehouseNextHopsEntityList(List<WarehouseNextHops> list) {
         if ( list == null ) {
             return null;
         }
 
         List<WarehouseNextHopsEntity> list1 = new ArrayList<WarehouseNextHopsEntity>( list.size() );
-        for ( WarehouseNextHopsDto warehouseNextHopsDto : list ) {
-            list1.add( warehouseNextHopsDtoToWarehouseNextHops( warehouseNextHopsDto ) );
+        for ( WarehouseNextHops warehouseNextHops : list ) {
+            list1.add( warehouseNextHopsDtoToWarehouseNextHopsEntity(warehouseNextHops) );
         }
 
         return list1;
     }
 
-    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinateEntity geoCoordinate) {
-        if ( geoCoordinate == null ) {
+    protected GeoCoordinate geoCoordinateEntityToGeoCoordinateDto(GeoCoordinateEntity geoCoordinateEntity) {
+        if ( geoCoordinateEntity == null ) {
             return null;
         }
 
-        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+        GeoCoordinate geoCoordinate = new GeoCoordinate();
 
-        geoCoordinateDto.setLat( geoCoordinate.getLat() );
-        geoCoordinateDto.setLon( geoCoordinate.getLon() );
+        geoCoordinate.setLat( geoCoordinateEntity.getLat() );
+        geoCoordinate.setLon( geoCoordinateEntity.getLon() );
 
-        return geoCoordinateDto;
+        return geoCoordinate;
     }
 
-    protected HopDto hopToHopDto(HopEntity hop) {
-        if ( hop == null ) {
+    protected Hop hopEntityToHopDto(HopEntity hopEntity) {
+        if ( hopEntity == null ) {
             return null;
         }
 
-        HopDto hopDto = new HopDto();
+        Hop hop = new Hop();
 
-        hopDto.setHopType( hop.getHopType() );
-        hopDto.setCode( hop.getCode() );
-        hopDto.setDescription( hop.getDescription() );
-        hopDto.setProcessingDelayMins( hop.getProcessingDelayMins() );
-        hopDto.setLocationName( hop.getLocationName() );
-        hopDto.setLocationCoordinates( geoCoordinateToGeoCoordinateDto( hop.getLocationCoordinates() ) );
+        hop.setHopType( hopEntity.getHopType() );
+        hop.setCode( hopEntity.getCode() );
+        hop.setDescription( hopEntity.getDescription() );
+        hop.setProcessingDelayMins( hopEntity.getProcessingDelayMins() );
+        hop.setLocationName( hopEntity.getLocationName() );
+        hop.setLocationCoordinates( geoCoordinateEntityToGeoCoordinateDto( hopEntity.getLocationCoordinates() ) );
 
-        return hopDto;
+        return hop;
     }
 
-    protected WarehouseNextHopsDto warehouseNextHopsToWarehouseNextHopsDto(WarehouseNextHopsEntity warehouseNextHops) {
-        if ( warehouseNextHops == null ) {
+    protected WarehouseNextHops warehouseNextHopsEntityToWarehouseNextHopsDto(WarehouseNextHopsEntity warehouseNextHopsEntity) {
+        if ( warehouseNextHopsEntity == null ) {
             return null;
         }
 
-        WarehouseNextHopsDto warehouseNextHopsDto = new WarehouseNextHopsDto();
+        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
 
-        warehouseNextHopsDto.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
-        warehouseNextHopsDto.setHop( hopToHopDto( warehouseNextHops.getHop() ) );
+        warehouseNextHops.setTraveltimeMins( warehouseNextHopsEntity.getTraveltimeMins() );
+        warehouseNextHops.setHop( hopEntityToHopDto( warehouseNextHopsEntity.getHop() ) );
 
-        return warehouseNextHopsDto;
+        return warehouseNextHops;
     }
 
-    protected List<WarehouseNextHopsDto> warehouseNextHopsListToWarehouseNextHopsDtoList(List<WarehouseNextHopsEntity> list) {
+    protected List<WarehouseNextHops> warehouseNextHopsEntityListToWarehouseNextHopsDtoList(List<WarehouseNextHopsEntity> list) {
         if ( list == null ) {
             return null;
         }
 
-        List<WarehouseNextHopsDto> list1 = new ArrayList<WarehouseNextHopsDto>( list.size() );
-        for ( WarehouseNextHopsEntity warehouseNextHops : list ) {
-            list1.add( warehouseNextHopsToWarehouseNextHopsDto( warehouseNextHops ) );
+        List<WarehouseNextHops> list1 = new ArrayList<WarehouseNextHops>( list.size() );
+        for ( WarehouseNextHopsEntity warehouseNextHopsEntity : list ) {
+            list1.add( warehouseNextHopsEntityToWarehouseNextHopsDto( warehouseNextHopsEntity ) );
         }
 
         return list1;

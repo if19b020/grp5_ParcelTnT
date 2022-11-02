@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
 import at.fhtw.swen3.persistence.entity.ErrorEntity;
-import at.fhtw.swen3.services.dto.ErrorDto;
+import at.fhtw.swen3.services.dto.Error;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,6 +9,6 @@ import org.mapstruct.factory.Mappers;
 public interface ErrorMapper {
     ErrorMapper INSTANCE = Mappers.getMapper(ErrorMapper.class);
 
-    ErrorDto entityToDto(ErrorEntity error);
-    ErrorEntity dtoToEntity(ErrorDto errorDto);
+    Error entityToDto(ErrorEntity error);
+    ErrorEntity dtoToEntity(Error error);
 }

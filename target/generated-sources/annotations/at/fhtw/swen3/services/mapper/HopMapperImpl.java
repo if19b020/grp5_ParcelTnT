@@ -2,76 +2,77 @@ package at.fhtw.swen3.services.mapper;
 
 import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
 import at.fhtw.swen3.persistence.entity.HopEntity;
-import at.fhtw.swen3.services.dto.GeoCoordinateDto;
-import at.fhtw.swen3.services.dto.HopDto;
+import at.fhtw.swen3.services.dto.GeoCoordinate;
+import at.fhtw.swen3.services.dto.Hop;
+
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:38:03+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
+    date = "2022-11-02T20:59:40+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class HopMapperImpl implements HopMapper {
 
     @Override
-    public HopEntity dtoToEntity(HopDto hop) {
+    public HopEntity dtoToEntity(Hop hop) {
         if ( hop == null ) {
             return null;
         }
 
-        HopEntity hop1 = new HopEntity();
+        HopEntity hopEntity = new HopEntity();
 
-        hop1.setHopType( hop.getHopType() );
-        hop1.setCode( hop.getCode() );
-        hop1.setDescription( hop.getDescription() );
-        hop1.setProcessingDelayMins( hop.getProcessingDelayMins() );
-        hop1.setLocationName( hop.getLocationName() );
-        hop1.setLocationCoordinates( geoCoordinateDtoToGeoCoordinate( hop.getLocationCoordinates() ) );
+        hopEntity.setHopType( hop.getHopType() );
+        hopEntity.setCode( hop.getCode() );
+        hopEntity.setDescription( hop.getDescription() );
+        hopEntity.setProcessingDelayMins( hop.getProcessingDelayMins() );
+        hopEntity.setLocationName( hop.getLocationName() );
+        hopEntity.setLocationCoordinates( geoCoordinateDtoToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
 
-        return hop1;
+        return hopEntity;
     }
 
     @Override
-    public HopDto entityToDto(HopEntity hop) {
+    public Hop entityToDto(HopEntity hop) {
         if ( hop == null ) {
             return null;
         }
 
-        HopDto hopDto = new HopDto();
+        Hop hopDto = new Hop();
 
         hopDto.setHopType( hop.getHopType() );
         hopDto.setCode( hop.getCode() );
         hopDto.setDescription( hop.getDescription() );
         hopDto.setProcessingDelayMins( hop.getProcessingDelayMins() );
         hopDto.setLocationName( hop.getLocationName() );
-        hopDto.setLocationCoordinates( geoCoordinateToGeoCoordinateDto( hop.getLocationCoordinates() ) );
+        hopDto.setLocationCoordinates( geoCoordinateEntityToGeoCoordinateDto( hop.getLocationCoordinates() ) );
 
         return hopDto;
     }
 
-    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
-        if ( geoCoordinateDto == null ) {
-            return null;
-        }
-
-        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
-
-        geoCoordinate.setLat( geoCoordinateDto.getLat() );
-        geoCoordinate.setLon( geoCoordinateDto.getLon() );
-
-        return geoCoordinate;
-    }
-
-    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinateEntity geoCoordinate) {
+    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
 
-        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+        GeoCoordinateEntity geoCoordinateEntity = new GeoCoordinateEntity();
 
-        geoCoordinateDto.setLat( geoCoordinate.getLat() );
-        geoCoordinateDto.setLon( geoCoordinate.getLon() );
+        geoCoordinateEntity.setLat( geoCoordinate.getLat() );
+        geoCoordinateEntity.setLon( geoCoordinate.getLon() );
 
-        return geoCoordinateDto;
+        return geoCoordinateEntity;
+    }
+
+    protected GeoCoordinate geoCoordinateEntityToGeoCoordinateDto(GeoCoordinateEntity geoCoordinateEntity) {
+        if ( geoCoordinateEntity == null ) {
+            return null;
+        }
+
+        GeoCoordinate geoCoordinate = new GeoCoordinate();
+
+        geoCoordinate.setLat( geoCoordinateEntity.getLat() );
+        geoCoordinate.setLon( geoCoordinateEntity.getLon() );
+
+        return geoCoordinate;
     }
 }

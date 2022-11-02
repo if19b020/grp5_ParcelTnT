@@ -1,9 +1,8 @@
 package at.fhtw.swen3.model.repositories;
 
-import at.fhtw.swen3.model.entities.Error;
+import at.fhtw.swen3.model.entities.ErrorDao;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
 
 import javax.annotation.Resource;
 
@@ -16,8 +15,8 @@ public class Repositories {
     public void errorRepository(){
 
         //repo.save("some error...");
-        Error error = new Error();
-        error.setErrorMessage("some error...");
+        ErrorDao errorDao = new ErrorDao();
+        errorDao.setErrorMessage("some error...");
 
         //repo.save(error);
         //errorRepository.findByText("some error...");

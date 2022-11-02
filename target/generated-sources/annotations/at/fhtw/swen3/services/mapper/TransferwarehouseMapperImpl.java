@@ -1,38 +1,39 @@
 package at.fhtw.swen3.services.mapper;
 
 import at.fhtw.swen3.persistence.entity.TransferwarehouseEntity;
-import at.fhtw.swen3.services.dto.TransferwarehouseDto;
+import at.fhtw.swen3.services.dto.Transferwarehouse;
+
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:38:03+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
+    date = "2022-11-02T20:59:40+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
 
     @Override
-    public TransferwarehouseEntity dtoToEntity(TransferwarehouseDto transferwarehouseDto) {
+    public TransferwarehouseEntity dtoToEntity(Transferwarehouse transferwarehouseDto) {
         if ( transferwarehouseDto == null ) {
             return null;
         }
 
-        TransferwarehouseEntity transferwarehouse = new TransferwarehouseEntity();
+        TransferwarehouseEntity transferwarehouseEntity = new TransferwarehouseEntity();
 
-        transferwarehouse.setRegionGeoJson( transferwarehouseDto.getRegionGeoJson() );
-        transferwarehouse.setLogisticsPartner( transferwarehouseDto.getLogisticsPartner() );
-        transferwarehouse.setLogisticsPartnerUrl( transferwarehouseDto.getLogisticsPartnerUrl() );
+        transferwarehouseEntity.setRegionGeoJson( transferwarehouseDto.getRegionGeoJson() );
+        transferwarehouseEntity.setLogisticsPartner( transferwarehouseDto.getLogisticsPartner() );
+        transferwarehouseEntity.setLogisticsPartnerUrl( transferwarehouseDto.getLogisticsPartnerUrl() );
 
-        return transferwarehouse;
+        return transferwarehouseEntity;
     }
 
     @Override
-    public TransferwarehouseDto entityToDto(TransferwarehouseEntity transferwarehouse) {
+    public Transferwarehouse entityToDto(TransferwarehouseEntity transferwarehouse) {
         if ( transferwarehouse == null ) {
             return null;
         }
 
-        TransferwarehouseDto transferwarehouseDto = new TransferwarehouseDto();
+        Transferwarehouse transferwarehouseDto = new Transferwarehouse();
 
         transferwarehouseDto.setRegionGeoJson( transferwarehouse.getRegionGeoJson() );
         transferwarehouseDto.setLogisticsPartner( transferwarehouse.getLogisticsPartner() );
