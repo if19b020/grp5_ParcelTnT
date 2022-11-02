@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.HopArrival;
+import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
 import at.fhtw.swen3.services.dto.HopArrivalDto;
 import javax.annotation.Generated;
 
@@ -12,12 +12,12 @@ import javax.annotation.Generated;
 public class HopArrivalMapperImpl implements HopArrivalMapper {
 
     @Override
-    public HopArrival dtoToEntity(HopArrivalDto hopArrival) {
+    public HopArrivalEntity dtoToEntity(HopArrivalDto hopArrival) {
         if ( hopArrival == null ) {
             return null;
         }
 
-        HopArrival hopArrival1 = new HopArrival();
+        HopArrivalEntity hopArrival1 = new HopArrivalEntity();
 
         hopArrival1.setCode( hopArrival.getCode() );
         hopArrival1.setDescription( hopArrival.getDescription() );
@@ -27,7 +27,7 @@ public class HopArrivalMapperImpl implements HopArrivalMapper {
     }
 
     @Override
-    public HopArrivalDto entityToDto(HopArrival hopArrival) {
+    public HopArrivalDto entityToDto(HopArrivalEntity hopArrival) {
         if ( hopArrival == null ) {
             return null;
         }

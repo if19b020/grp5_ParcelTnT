@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinate;
-import at.fhtw.swen3.persistence.entity.Hop;
+import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.HopEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinateDto;
 import at.fhtw.swen3.services.dto.HopDto;
 import javax.annotation.Generated;
@@ -14,12 +14,12 @@ import javax.annotation.Generated;
 public class HopMapperImpl implements HopMapper {
 
     @Override
-    public Hop dtoToEntity(HopDto hop) {
+    public HopEntity dtoToEntity(HopDto hop) {
         if ( hop == null ) {
             return null;
         }
 
-        Hop hop1 = new Hop();
+        HopEntity hop1 = new HopEntity();
 
         hop1.setHopType( hop.getHopType() );
         hop1.setCode( hop.getCode() );
@@ -32,7 +32,7 @@ public class HopMapperImpl implements HopMapper {
     }
 
     @Override
-    public HopDto entityToDto(Hop hop) {
+    public HopDto entityToDto(HopEntity hop) {
         if ( hop == null ) {
             return null;
         }
@@ -49,12 +49,12 @@ public class HopMapperImpl implements HopMapper {
         return hopDto;
     }
 
-    protected GeoCoordinate geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
+    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
         if ( geoCoordinateDto == null ) {
             return null;
         }
 
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
 
         geoCoordinate.setLat( geoCoordinateDto.getLat() );
         geoCoordinate.setLon( geoCoordinateDto.getLon() );
@@ -62,7 +62,7 @@ public class HopMapperImpl implements HopMapper {
         return geoCoordinate;
     }
 
-    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinateEntity geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }

@@ -1,9 +1,9 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinate;
-import at.fhtw.swen3.persistence.entity.Hop;
-import at.fhtw.swen3.persistence.entity.Warehouse;
-import at.fhtw.swen3.persistence.entity.WarehouseNextHops;
+import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.HopEntity;
+import at.fhtw.swen3.persistence.entity.WarehouseEntity;
+import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinateDto;
 import at.fhtw.swen3.services.dto.HopDto;
 import at.fhtw.swen3.services.dto.WarehouseDto;
@@ -20,12 +20,12 @@ import javax.annotation.Generated;
 public class WarehouseMapperImpl implements WarehouseMapper {
 
     @Override
-    public Warehouse dtoToEntity(WarehouseDto warehouseDto) {
+    public WarehouseEntity dtoToEntity(WarehouseDto warehouseDto) {
         if ( warehouseDto == null ) {
             return null;
         }
 
-        Warehouse warehouse = new Warehouse();
+        WarehouseEntity warehouse = new WarehouseEntity();
 
         warehouse.setLevel( warehouseDto.getLevel() );
         warehouse.setNextHops( warehouseNextHopsDtoListToWarehouseNextHopsList( warehouseDto.getNextHops() ) );
@@ -34,7 +34,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
     }
 
     @Override
-    public WarehouseDto entityToDto(Warehouse warehouse) {
+    public WarehouseDto entityToDto(WarehouseEntity warehouse) {
         if ( warehouse == null ) {
             return null;
         }
@@ -47,12 +47,12 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return warehouseDto;
     }
 
-    protected GeoCoordinate geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
+    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
         if ( geoCoordinateDto == null ) {
             return null;
         }
 
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
 
         geoCoordinate.setLat( geoCoordinateDto.getLat() );
         geoCoordinate.setLon( geoCoordinateDto.getLon() );
@@ -60,12 +60,12 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return geoCoordinate;
     }
 
-    protected Hop hopDtoToHop(HopDto hopDto) {
+    protected HopEntity hopDtoToHop(HopDto hopDto) {
         if ( hopDto == null ) {
             return null;
         }
 
-        Hop hop = new Hop();
+        HopEntity hop = new HopEntity();
 
         hop.setHopType( hopDto.getHopType() );
         hop.setCode( hopDto.getCode() );
@@ -77,12 +77,12 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return hop;
     }
 
-    protected WarehouseNextHops warehouseNextHopsDtoToWarehouseNextHops(WarehouseNextHopsDto warehouseNextHopsDto) {
+    protected WarehouseNextHopsEntity warehouseNextHopsDtoToWarehouseNextHops(WarehouseNextHopsDto warehouseNextHopsDto) {
         if ( warehouseNextHopsDto == null ) {
             return null;
         }
 
-        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
+        WarehouseNextHopsEntity warehouseNextHops = new WarehouseNextHopsEntity();
 
         warehouseNextHops.setTraveltimeMins( warehouseNextHopsDto.getTraveltimeMins() );
         warehouseNextHops.setHop( hopDtoToHop( warehouseNextHopsDto.getHop() ) );
@@ -90,12 +90,12 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return warehouseNextHops;
     }
 
-    protected List<WarehouseNextHops> warehouseNextHopsDtoListToWarehouseNextHopsList(List<WarehouseNextHopsDto> list) {
+    protected List<WarehouseNextHopsEntity> warehouseNextHopsDtoListToWarehouseNextHopsList(List<WarehouseNextHopsDto> list) {
         if ( list == null ) {
             return null;
         }
 
-        List<WarehouseNextHops> list1 = new ArrayList<WarehouseNextHops>( list.size() );
+        List<WarehouseNextHopsEntity> list1 = new ArrayList<WarehouseNextHopsEntity>( list.size() );
         for ( WarehouseNextHopsDto warehouseNextHopsDto : list ) {
             list1.add( warehouseNextHopsDtoToWarehouseNextHops( warehouseNextHopsDto ) );
         }
@@ -103,7 +103,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return list1;
     }
 
-    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinateEntity geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
@@ -116,7 +116,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return geoCoordinateDto;
     }
 
-    protected HopDto hopToHopDto(Hop hop) {
+    protected HopDto hopToHopDto(HopEntity hop) {
         if ( hop == null ) {
             return null;
         }
@@ -133,7 +133,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return hopDto;
     }
 
-    protected WarehouseNextHopsDto warehouseNextHopsToWarehouseNextHopsDto(WarehouseNextHops warehouseNextHops) {
+    protected WarehouseNextHopsDto warehouseNextHopsToWarehouseNextHopsDto(WarehouseNextHopsEntity warehouseNextHops) {
         if ( warehouseNextHops == null ) {
             return null;
         }
@@ -146,13 +146,13 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return warehouseNextHopsDto;
     }
 
-    protected List<WarehouseNextHopsDto> warehouseNextHopsListToWarehouseNextHopsDtoList(List<WarehouseNextHops> list) {
+    protected List<WarehouseNextHopsDto> warehouseNextHopsListToWarehouseNextHopsDtoList(List<WarehouseNextHopsEntity> list) {
         if ( list == null ) {
             return null;
         }
 
         List<WarehouseNextHopsDto> list1 = new ArrayList<WarehouseNextHopsDto>( list.size() );
-        for ( WarehouseNextHops warehouseNextHops : list ) {
+        for ( WarehouseNextHopsEntity warehouseNextHops : list ) {
             list1.add( warehouseNextHopsToWarehouseNextHopsDto( warehouseNextHops ) );
         }
 

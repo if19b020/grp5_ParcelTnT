@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
-public class Recipient {
+public class RecipientEntity {
     @Pattern(regexp = "^[A-Z][A-Za-z-]+$")
     private String name = null;
     @Pattern(regexp = "^[A-Za-z\\u00c4\\u00e4\\u00d6\\u00f6\\u00dc\\u00fc\\u00df]+\\s[0-9][A-Za-z0-9/]+$") // also match umlaut and ß

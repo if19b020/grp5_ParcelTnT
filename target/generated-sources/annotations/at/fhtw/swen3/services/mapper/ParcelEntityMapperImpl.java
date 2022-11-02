@@ -1,9 +1,9 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.HopArrival;
+import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
 import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.persistence.entity.ParcelEntity.StateEnum;
-import at.fhtw.swen3.persistence.entity.Recipient;
+import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.services.dto.HopArrivalDto;
 import at.fhtw.swen3.services.dto.NewParcelInfoDto;
 import at.fhtw.swen3.services.dto.ParcelDto;
@@ -88,12 +88,12 @@ public class ParcelEntityMapperImpl implements ParcelEntityMapper {
         return trackingInformationDto;
     }
 
-    protected Recipient recipientDtoToRecipient(RecipientDto recipientDto) {
+    protected RecipientEntity recipientDtoToRecipient(RecipientDto recipientDto) {
         if ( recipientDto == null ) {
             return null;
         }
 
-        Recipient recipient = new Recipient();
+        RecipientEntity recipient = new RecipientEntity();
 
         recipient.setName( recipientDto.getName() );
         recipient.setStreet( recipientDto.getStreet() );
@@ -128,12 +128,12 @@ public class ParcelEntityMapperImpl implements ParcelEntityMapper {
         return stateEnum1;
     }
 
-    protected HopArrival hopArrivalDtoToHopArrival(HopArrivalDto hopArrivalDto) {
+    protected HopArrivalEntity hopArrivalDtoToHopArrival(HopArrivalDto hopArrivalDto) {
         if ( hopArrivalDto == null ) {
             return null;
         }
 
-        HopArrival hopArrival = new HopArrival();
+        HopArrivalEntity hopArrival = new HopArrivalEntity();
 
         hopArrival.setCode( hopArrivalDto.getCode() );
         hopArrival.setDescription( hopArrivalDto.getDescription() );
@@ -142,12 +142,12 @@ public class ParcelEntityMapperImpl implements ParcelEntityMapper {
         return hopArrival;
     }
 
-    protected List<HopArrival> hopArrivalDtoListToHopArrivalList(List<HopArrivalDto> list) {
+    protected List<HopArrivalEntity> hopArrivalDtoListToHopArrivalList(List<HopArrivalDto> list) {
         if ( list == null ) {
             return null;
         }
 
-        List<HopArrival> list1 = new ArrayList<HopArrival>( list.size() );
+        List<HopArrivalEntity> list1 = new ArrayList<HopArrivalEntity>( list.size() );
         for ( HopArrivalDto hopArrivalDto : list ) {
             list1.add( hopArrivalDtoToHopArrival( hopArrivalDto ) );
         }
@@ -155,7 +155,7 @@ public class ParcelEntityMapperImpl implements ParcelEntityMapper {
         return list1;
     }
 
-    protected RecipientDto recipientToRecipientDto(Recipient recipient) {
+    protected RecipientDto recipientToRecipientDto(RecipientEntity recipient) {
         if ( recipient == null ) {
             return null;
         }
@@ -195,7 +195,7 @@ public class ParcelEntityMapperImpl implements ParcelEntityMapper {
         return stateEnum1;
     }
 
-    protected HopArrivalDto hopArrivalToHopArrivalDto(HopArrival hopArrival) {
+    protected HopArrivalDto hopArrivalToHopArrivalDto(HopArrivalEntity hopArrival) {
         if ( hopArrival == null ) {
             return null;
         }
@@ -209,13 +209,13 @@ public class ParcelEntityMapperImpl implements ParcelEntityMapper {
         return hopArrivalDto;
     }
 
-    protected List<HopArrivalDto> hopArrivalListToHopArrivalDtoList(List<HopArrival> list) {
+    protected List<HopArrivalDto> hopArrivalListToHopArrivalDtoList(List<HopArrivalEntity> list) {
         if ( list == null ) {
             return null;
         }
 
         List<HopArrivalDto> list1 = new ArrayList<HopArrivalDto>( list.size() );
-        for ( HopArrival hopArrival : list ) {
+        for ( HopArrivalEntity hopArrival : list ) {
             list1.add( hopArrivalToHopArrivalDto( hopArrival ) );
         }
 

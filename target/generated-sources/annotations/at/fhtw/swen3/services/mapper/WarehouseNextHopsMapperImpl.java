@@ -1,8 +1,8 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinate;
-import at.fhtw.swen3.persistence.entity.Hop;
-import at.fhtw.swen3.persistence.entity.WarehouseNextHops;
+import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.HopEntity;
+import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinateDto;
 import at.fhtw.swen3.services.dto.HopDto;
 import at.fhtw.swen3.services.dto.WarehouseNextHopsDto;
@@ -16,12 +16,12 @@ import javax.annotation.Generated;
 public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
 
     @Override
-    public WarehouseNextHops dtoToEntity(WarehouseNextHopsDto warehouseNextHopsDto) {
+    public WarehouseNextHopsEntity dtoToEntity(WarehouseNextHopsDto warehouseNextHopsDto) {
         if ( warehouseNextHopsDto == null ) {
             return null;
         }
 
-        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
+        WarehouseNextHopsEntity warehouseNextHops = new WarehouseNextHopsEntity();
 
         warehouseNextHops.setTraveltimeMins( warehouseNextHopsDto.getTraveltimeMins() );
         warehouseNextHops.setHop( hopDtoToHop( warehouseNextHopsDto.getHop() ) );
@@ -30,7 +30,7 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
     }
 
     @Override
-    public WarehouseNextHopsDto entityToDto(WarehouseNextHops warehouseNextHops) {
+    public WarehouseNextHopsDto entityToDto(WarehouseNextHopsEntity warehouseNextHops) {
         if ( warehouseNextHops == null ) {
             return null;
         }
@@ -43,12 +43,12 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         return warehouseNextHopsDto;
     }
 
-    protected GeoCoordinate geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
+    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinate(GeoCoordinateDto geoCoordinateDto) {
         if ( geoCoordinateDto == null ) {
             return null;
         }
 
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
 
         geoCoordinate.setLat( geoCoordinateDto.getLat() );
         geoCoordinate.setLon( geoCoordinateDto.getLon() );
@@ -56,12 +56,12 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         return geoCoordinate;
     }
 
-    protected Hop hopDtoToHop(HopDto hopDto) {
+    protected HopEntity hopDtoToHop(HopDto hopDto) {
         if ( hopDto == null ) {
             return null;
         }
 
-        Hop hop = new Hop();
+        HopEntity hop = new HopEntity();
 
         hop.setHopType( hopDto.getHopType() );
         hop.setCode( hopDto.getCode() );
@@ -73,7 +73,7 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         return hop;
     }
 
-    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinateDto geoCoordinateToGeoCoordinateDto(GeoCoordinateEntity geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
@@ -86,7 +86,7 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         return geoCoordinateDto;
     }
 
-    protected HopDto hopToHopDto(Hop hop) {
+    protected HopDto hopToHopDto(HopEntity hop) {
         if ( hop == null ) {
             return null;
         }

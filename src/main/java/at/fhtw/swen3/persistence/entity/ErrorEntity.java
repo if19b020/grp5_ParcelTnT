@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Error {
+public class ErrorEntity {
     private String errorMessage = null;
 
 }

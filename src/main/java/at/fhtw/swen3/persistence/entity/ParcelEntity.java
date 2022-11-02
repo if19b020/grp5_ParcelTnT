@@ -37,14 +37,14 @@ public class ParcelEntity {
     @Min(value = 1, message = "Weight must be greater than 0")
     private Float weight = null;
     @NotNull
-    private Recipient recipient = null;
+    private RecipientEntity recipient = null;
     @NotNull
-    private Recipient sender = null;
+    private RecipientEntity sender = null;
 
     @Pattern(regexp="^[A-Z0-9]{9}$")
     private String trackingId = null;
 
     private StateEnum state = null;
-    private List<HopArrival> visitedHops = new ArrayList<HopArrival>();
-    private List<HopArrival> futureHops = new ArrayList<HopArrival>();
+    private List<HopArrivalEntity> visitedHops = new ArrayList<HopArrivalEntity>();
+    private List<HopArrivalEntity> futureHops = new ArrayList<HopArrivalEntity>();
 }

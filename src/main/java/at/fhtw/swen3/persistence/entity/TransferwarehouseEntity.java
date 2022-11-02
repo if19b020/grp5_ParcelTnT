@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Truck {
+public class TransferwarehouseEntity {
     private String regionGeoJson = null;
-    private String numberPlate = null;
+    private String logisticsPartner = null;
+    private String logisticsPartnerUrl = null;
 }

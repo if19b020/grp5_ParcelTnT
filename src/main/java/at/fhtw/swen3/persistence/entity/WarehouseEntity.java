@@ -9,9 +9,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Warehouse {
+public class WarehouseEntity {
     private Integer level = null;
     @NotNull
-    private List<WarehouseNextHops> nextHops = new ArrayList<WarehouseNextHops>();
+    private List<WarehouseNextHopsEntity> nextHops = new ArrayList<WarehouseNextHopsEntity>();
 
 }

@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
 import at.fhtw.swen3.persistence.entity.*;
-import at.fhtw.swen3.persistence.entity.Error;
+import at.fhtw.swen3.persistence.entity.ErrorEntity;
 import at.fhtw.swen3.services.dto.*;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +18,7 @@ public class EntitiesMappersTest {
     //Error
     @Test
     public void errorToErrorDto(){
-        Error error = new Error();
+        ErrorEntity error = new ErrorEntity();
         error.setErrorMessage("some error message...");
 
         ErrorDto errorDto = ErrorMapper.INSTANCE.entityToDto(error);
@@ -30,7 +30,7 @@ public class EntitiesMappersTest {
         ErrorDto errorDto = new ErrorDto();
         errorDto.setErrorMessage("some error message...");
 
-        Error error = ErrorMapper.INSTANCE.dtoToEntity(errorDto);
+        ErrorEntity error = ErrorMapper.INSTANCE.dtoToEntity(errorDto);
 
         assertEquals( "some error message...", error.getErrorMessage());
     }
@@ -38,7 +38,7 @@ public class EntitiesMappersTest {
     //GeoCoordinate
     @Test
     public void geoCoordinateToGeoCoordinateDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
         geoCoordinate.setLat(34.4);
         geoCoordinate.setLon(56.6);
 
@@ -53,7 +53,7 @@ public class EntitiesMappersTest {
         geoCoordinateDto.setLat(34.4);
         geoCoordinateDto.setLon(56.6);
 
-        GeoCoordinate geoCoordinate = GeoCoordinateMapper.INSTANCE.dtoToEntity(geoCoordinateDto);
+        GeoCoordinateEntity geoCoordinate = GeoCoordinateMapper.INSTANCE.dtoToEntity(geoCoordinateDto);
 
         assertEquals( "34.4", geoCoordinate.getLat().toString());
         assertEquals( "56.6", geoCoordinate.getLon().toString());
@@ -62,10 +62,10 @@ public class EntitiesMappersTest {
     //Hop
     @Test
     public void hopToHopDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
         geoCoordinate.setLon(3.3);
         geoCoordinate.setLat(4.4);
-        Hop hop = new Hop();
+        HopEntity hop = new HopEntity();
         hop.setHopType("some type...");
         hop.setCode("some code...");
         hop.setDescription("some description...");
@@ -96,7 +96,7 @@ public class EntitiesMappersTest {
         hopDto.setLocationName("some name...");
         hopDto.setLocationCoordinates(geoCoordinateDto);
 
-        Hop hop = HopMapper.INSTANCE.dtoToEntity(hopDto);
+        HopEntity hop = HopMapper.INSTANCE.dtoToEntity(hopDto);
 
         assertEquals("some type...",hop.getHopType());
         assertEquals("some code...",hop.getCode());
@@ -111,7 +111,7 @@ public class EntitiesMappersTest {
     @Test
     public void hopArrivalToHopArrivalDto(){
         OffsetDateTime time = OffsetDateTime.now();
-        HopArrival hopArrival = new HopArrival();
+        HopArrivalEntity hopArrival = new HopArrivalEntity();
         hopArrival.setCode("some code...");
         hopArrival.setDescription("some description...");
         hopArrival.setDateTime(time);
@@ -130,7 +130,7 @@ public class EntitiesMappersTest {
         hopArrivalDto.setDescription("some description...");
         hopArrivalDto.setDateTime(time);
 
-        HopArrival hopArrival = HopArrivalMapper.INSTANCE.dtoToEntity(hopArrivalDto);
+        HopArrivalEntity hopArrival = HopArrivalMapper.INSTANCE.dtoToEntity(hopArrivalDto);
 
         assertEquals("some code...",hopArrival.getCode());
         assertEquals("some description...",hopArrival.getDescription());
@@ -140,7 +140,7 @@ public class EntitiesMappersTest {
     //Recipient
     @Test
     public void recipientToRecipientDto(){
-        Recipient recipient = new Recipient();
+        RecipientEntity recipient = new RecipientEntity();
         recipient.setName("some name...");
         recipient.setStreet("some street...");
         recipient.setPostalCode("some code...");
@@ -164,7 +164,7 @@ public class EntitiesMappersTest {
         recipientDto.setCity("some city...");
         recipientDto.setCountry("some country...");
 
-        Recipient recipient = RecipientMapper.INSTANCE.dtoToEntity(recipientDto);
+        RecipientEntity recipient = RecipientMapper.INSTANCE.dtoToEntity(recipientDto);
 
         assertEquals("some name...",recipient.getName());
         assertEquals("some street...",recipient.getStreet());
@@ -176,7 +176,7 @@ public class EntitiesMappersTest {
     //Transfarewarehouse
     @Test
     public void transfarewarehouseToTransferwarehouseDto(){
-        Transferwarehouse transferwarehouse = new Transferwarehouse();
+        TransferwarehouseEntity transferwarehouse = new TransferwarehouseEntity();
         transferwarehouse.setRegionGeoJson("some text...");
         transferwarehouse.setLogisticsPartner("some text...");
         transferwarehouse.setLogisticsPartnerUrl("some text...");
@@ -194,7 +194,7 @@ public class EntitiesMappersTest {
         transferwarehouseDto.setLogisticsPartner("some text...");
         transferwarehouseDto.setLogisticsPartnerUrl("some text...");
 
-        Transferwarehouse transferwarehouse = TransferwarehouseMapper.INSTANCE.dtoToEntity(transferwarehouseDto);
+        TransferwarehouseEntity transferwarehouse = TransferwarehouseMapper.INSTANCE.dtoToEntity(transferwarehouseDto);
 
         assertEquals("some text...",transferwarehouse.getRegionGeoJson());
         assertEquals("some text...",transferwarehouse.getLogisticsPartner());
@@ -204,7 +204,7 @@ public class EntitiesMappersTest {
     //Truck
     @Test
     public void truckToTruckDto(){
-        Truck truck = new Truck();
+        TruckEntity truck = new TruckEntity();
         truck.setRegionGeoJson("some geo...");
         truck.setNumberPlate("1234");
 
@@ -219,7 +219,7 @@ public class EntitiesMappersTest {
         truckDto.setRegionGeoJson("some geo...");
         truckDto.setNumberPlate("1234");
 
-        Truck truck = TruckMapper.INSTANCE.dtoToEntity(truckDto);
+        TruckEntity truck = TruckMapper.INSTANCE.dtoToEntity(truckDto);
 
         assertEquals("some geo...",truck.getRegionGeoJson());
         assertEquals("1234",truck.getNumberPlate());
@@ -228,17 +228,17 @@ public class EntitiesMappersTest {
     //WarehouseNextHops
     @Test
     public void warehouseNextHopsToWarehouseNextHopsDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
         geoCoordinate.setLon(3.3);
         geoCoordinate.setLat(4.4);
-        Hop hop = new Hop();
+        HopEntity hop = new HopEntity();
         hop.setHopType("some type...");
         hop.setCode("some code...");
         hop.setDescription("some description...");
         hop.setProcessingDelayMins(3);
         hop.setLocationName("some name...");
         hop.setLocationCoordinates(geoCoordinate);
-        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
+        WarehouseNextHopsEntity warehouseNextHops = new WarehouseNextHopsEntity();
         warehouseNextHops.setTraveltimeMins(123);
         warehouseNextHops.setHop(hop);
 
@@ -269,7 +269,7 @@ public class EntitiesMappersTest {
         warehouseNextHopsDto.setTraveltimeMins(123);
         warehouseNextHopsDto.setHop(hopDto);
 
-        WarehouseNextHops warehouseNextHops = WarehouseNextHopsMapper.INSTANCE.dtoToEntity(warehouseNextHopsDto);
+        WarehouseNextHopsEntity warehouseNextHops = WarehouseNextHopsMapper.INSTANCE.dtoToEntity(warehouseNextHopsDto);
 
         assertEquals("123",warehouseNextHops.getTraveltimeMins().toString());
         assertEquals("some type...",warehouseNextHops.getHop().getHopType());
@@ -284,22 +284,22 @@ public class EntitiesMappersTest {
     //Warehouse
     @Test
     public void warehouseToWarehouseDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate = new GeoCoordinateEntity();
         geoCoordinate.setLon(3.3);
         geoCoordinate.setLat(4.4);
-        Hop hop = new Hop();
+        HopEntity hop = new HopEntity();
         hop.setHopType("some type...");
         hop.setCode("some code...");
         hop.setDescription("some description...");
         hop.setProcessingDelayMins(3);
         hop.setLocationName("some name...");
         hop.setLocationCoordinates(geoCoordinate);
-        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
+        WarehouseNextHopsEntity warehouseNextHops = new WarehouseNextHopsEntity();
         warehouseNextHops.setTraveltimeMins(123);
         warehouseNextHops.setHop(hop);
-        List<WarehouseNextHops> warehouseNextHopsList = new ArrayList<>();
+        List<WarehouseNextHopsEntity> warehouseNextHopsList = new ArrayList<>();
         warehouseNextHopsList.add(warehouseNextHops);
-        Warehouse warehouse = new Warehouse();
+        WarehouseEntity warehouse = new WarehouseEntity();
         warehouse.setLevel(99);
         warehouse.setNextHops(warehouseNextHopsList);
 
@@ -336,7 +336,7 @@ public class EntitiesMappersTest {
         warehouseDto.setLevel(99);
         warehouseDto.setNextHops(warehouseNextHopsDtoList);
 
-        Warehouse warehouse = WarehouseMapper.INSTANCE.dtoToEntity(warehouseDto);
+        WarehouseEntity warehouse = WarehouseMapper.INSTANCE.dtoToEntity(warehouseDto);
 
         assertEquals("99",warehouse.getLevel().toString());
         assertEquals("123",warehouse.getNextHops().get(0).getTraveltimeMins().toString());

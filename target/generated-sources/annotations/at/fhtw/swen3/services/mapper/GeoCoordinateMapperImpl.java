@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinate;
+import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinateDto;
 import javax.annotation.Generated;
 
@@ -12,12 +12,12 @@ import javax.annotation.Generated;
 public class GeoCoordinateMapperImpl implements GeoCoordinateMapper {
 
     @Override
-    public GeoCoordinate dtoToEntity(GeoCoordinateDto geoCoordinate) {
+    public GeoCoordinateEntity dtoToEntity(GeoCoordinateDto geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
 
-        GeoCoordinate geoCoordinate1 = new GeoCoordinate();
+        GeoCoordinateEntity geoCoordinate1 = new GeoCoordinateEntity();
 
         geoCoordinate1.setLat( geoCoordinate.getLat() );
         geoCoordinate1.setLon( geoCoordinate.getLon() );
@@ -26,7 +26,7 @@ public class GeoCoordinateMapperImpl implements GeoCoordinateMapper {
     }
 
     @Override
-    public GeoCoordinateDto entityToDto(GeoCoordinate geoCoordinate) {
+    public GeoCoordinateDto entityToDto(GeoCoordinateEntity geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }

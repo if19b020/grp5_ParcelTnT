@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
+import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
 import at.fhtw.swen3.services.dto.HopArrivalDto;
-import at.fhtw.swen3.persistence.entity.HopArrival;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,6 +9,6 @@ import org.mapstruct.factory.Mappers;
 public interface HopArrivalMapper {
     HopArrivalMapper INSTANCE = Mappers.getMapper(HopArrivalMapper.class);
 
-    HopArrival dtoToEntity(HopArrivalDto hopArrival);
-    HopArrivalDto entityToDto(HopArrival hopArrival);
+    HopArrivalEntity dtoToEntity(HopArrivalDto hopArrival);
+    HopArrivalDto entityToDto(HopArrivalEntity hopArrival);
 }

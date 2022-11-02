@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.Recipient;
+import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.services.dto.RecipientDto;
 import javax.annotation.Generated;
 
@@ -12,12 +12,12 @@ import javax.annotation.Generated;
 public class RecipientMapperImpl implements RecipientMapper {
 
     @Override
-    public Recipient dtoToEntity(RecipientDto recipient) {
+    public RecipientEntity dtoToEntity(RecipientDto recipient) {
         if ( recipient == null ) {
             return null;
         }
 
-        Recipient recipient1 = new Recipient();
+        RecipientEntity recipient1 = new RecipientEntity();
 
         recipient1.setName( recipient.getName() );
         recipient1.setStreet( recipient.getStreet() );
@@ -29,7 +29,7 @@ public class RecipientMapperImpl implements RecipientMapper {
     }
 
     @Override
-    public RecipientDto entityToDto(Recipient recipient) {
+    public RecipientDto entityToDto(RecipientEntity recipient) {
         if ( recipient == null ) {
             return null;
         }

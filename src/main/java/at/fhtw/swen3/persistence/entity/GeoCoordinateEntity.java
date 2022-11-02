@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GeoCoordinate {
+public class GeoCoordinateEntity {
     private Double lat = null;
     private Double lon = null;
 }

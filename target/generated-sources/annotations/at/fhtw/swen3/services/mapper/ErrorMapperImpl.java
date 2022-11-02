@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.Error;
+import at.fhtw.swen3.persistence.entity.ErrorEntity;
 import at.fhtw.swen3.services.dto.ErrorDto;
 import javax.annotation.Generated;
 
@@ -12,7 +12,7 @@ import javax.annotation.Generated;
 public class ErrorMapperImpl implements ErrorMapper {
 
     @Override
-    public ErrorDto entityToDto(Error error) {
+    public ErrorDto entityToDto(ErrorEntity error) {
         if ( error == null ) {
             return null;
         }
@@ -25,12 +25,12 @@ public class ErrorMapperImpl implements ErrorMapper {
     }
 
     @Override
-    public Error dtoToEntity(ErrorDto errorDto) {
+    public ErrorEntity dtoToEntity(ErrorDto errorDto) {
         if ( errorDto == null ) {
             return null;
         }
 
-        Error error = new Error();
+        ErrorEntity error = new ErrorEntity();
 
         error.setErrorMessage( errorDto.getErrorMessage() );
 

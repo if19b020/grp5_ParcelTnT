@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class WarehouseNextHops {
+public class WarehouseNextHopsEntity {
     private Integer traveltimeMins = null;
     @NotNull
-    private Hop hop = null;
+    private HopEntity hop = null;
 }

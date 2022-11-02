@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.Transferwarehouse;
+import at.fhtw.swen3.persistence.entity.TransferwarehouseEntity;
 import at.fhtw.swen3.services.dto.TransferwarehouseDto;
 import javax.annotation.Generated;
 
@@ -12,12 +12,12 @@ import javax.annotation.Generated;
 public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
 
     @Override
-    public Transferwarehouse dtoToEntity(TransferwarehouseDto transferwarehouseDto) {
+    public TransferwarehouseEntity dtoToEntity(TransferwarehouseDto transferwarehouseDto) {
         if ( transferwarehouseDto == null ) {
             return null;
         }
 
-        Transferwarehouse transferwarehouse = new Transferwarehouse();
+        TransferwarehouseEntity transferwarehouse = new TransferwarehouseEntity();
 
         transferwarehouse.setRegionGeoJson( transferwarehouseDto.getRegionGeoJson() );
         transferwarehouse.setLogisticsPartner( transferwarehouseDto.getLogisticsPartner() );
@@ -27,7 +27,7 @@ public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
     }
 
     @Override
-    public TransferwarehouseDto entityToDto(Transferwarehouse transferwarehouse) {
+    public TransferwarehouseDto entityToDto(TransferwarehouseEntity transferwarehouse) {
         if ( transferwarehouse == null ) {
             return null;
         }
