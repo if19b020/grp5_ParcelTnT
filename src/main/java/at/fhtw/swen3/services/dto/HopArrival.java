@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class HopArrivalDto {
+public class HopArrival {
   @JsonProperty("code")
   private String code = null;
 
@@ -25,7 +25,7 @@ public class HopArrivalDto {
   @JsonProperty("dateTime")
   private OffsetDateTime dateTime = null;
 
-  public HopArrivalDto code(String code) {
+  public HopArrival code(String code) {
     this.code = code;
     return this;
   }
@@ -45,7 +45,7 @@ public class HopArrivalDto {
     this.code = code;
   }
 
-  public HopArrivalDto description(String description) {
+  public HopArrival description(String description) {
     this.description = description;
     return this;
   }
@@ -65,7 +65,7 @@ public class HopArrivalDto {
     this.description = description;
   }
 
-  public HopArrivalDto dateTime(OffsetDateTime dateTime) {
+  public HopArrival dateTime(OffsetDateTime dateTime) {
     this.dateTime = dateTime;
     return this;
   }
@@ -95,7 +95,7 @@ public class HopArrivalDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HopArrivalDto hopArrival = (HopArrivalDto) o;
+    HopArrival hopArrival = (HopArrival) o;
     return Objects.equals(this.code, hopArrival.code) &&
         Objects.equals(this.description, hopArrival.description) &&
         Objects.equals(this.dateTime, hopArrival.dateTime);

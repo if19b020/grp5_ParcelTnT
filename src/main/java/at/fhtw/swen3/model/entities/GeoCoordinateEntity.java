@@ -8,11 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 //@Entity
-public class Truck {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class GeoCoordinateEntity {
+    //@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column
-    private String regionGeoJson = null;
+    private Double lat = null;
     //@Column
-    private String numberPlate = null;
+    private Double lon = null;
 }
