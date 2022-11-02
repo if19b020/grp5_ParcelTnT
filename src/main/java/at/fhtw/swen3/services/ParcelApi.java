@@ -5,10 +5,10 @@
  */
 package at.fhtw.swen3.services;
 
-import at.fhtw.swen3.services.dto.Error;
-import at.fhtw.swen3.services.dto.NewParcelInfo;
-import at.fhtw.swen3.services.dto.Parcel;
-import at.fhtw.swen3.services.dto.TrackingInformation;
+import at.fhtw.swen3.services.dto.ErrorDto;
+import at.fhtw.swen3.services.dto.NewParcelInfoDto;
+import at.fhtw.swen3.services.dto.ParcelDto;
+import at.fhtw.swen3.services.dto.TrackingInformationDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -34,7 +34,7 @@ public interface ParcelApi {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Successfully reported hop."),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))),
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
         @ApiResponse(responseCode = "404", description = "Parcel does not exist with this tracking ID. ") })
     @RequestMapping(value = "/parcel/{trackingId}/reportDelivery/",
@@ -47,7 +47,7 @@ public interface ParcelApi {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Successfully reported hop."),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))),
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
         @ApiResponse(responseCode = "404", description = "Parcel does not exist with this tracking ID or hop with code not found. ") })
     @RequestMapping(value = "/parcel/{trackingId}/reportHop/{code}",
@@ -58,43 +58,43 @@ public interface ParcelApi {
 
     @Operation(summary = "Submit a new parcel to the logistics service. ", description = "", tags={ "sender" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "201", description = "Successfully submitted the new parcel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = NewParcelInfo.class))),
+        @ApiResponse(responseCode = "201", description = "Successfully submitted the new parcel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = NewParcelInfoDto.class))),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))),
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
-        @ApiResponse(responseCode = "404", description = "The address of sender or receiver was not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))) })
+        @ApiResponse(responseCode = "404", description = "The address of sender or receiver was not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
     @RequestMapping(value = "/parcel",
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<NewParcelInfo> submitParcel(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Parcel body);
+    ResponseEntity<NewParcelInfoDto> submitParcel(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody ParcelDto body);
 
 
     @Operation(summary = "Find the latest state of a parcel by its tracking ID. ", description = "", tags={ "recipient" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Parcel exists, here's the tracking information.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TrackingInformation.class))),
+        @ApiResponse(responseCode = "200", description = "Parcel exists, here's the tracking information.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TrackingInformationDto.class))),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))),
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
         @ApiResponse(responseCode = "404", description = "Parcel does not exist with this tracking ID.") })
     @RequestMapping(value = "/parcel/{trackingId}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<TrackingInformation> trackParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId);
+    ResponseEntity<TrackingInformationDto> trackParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId);
 
 
     @Operation(summary = "Transfer an existing parcel into the system from the service of a logistics partner. ", description = "", tags={ "logisticsPartner" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Successfully transitioned the parcel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = NewParcelInfo.class))),
+        @ApiResponse(responseCode = "200", description = "Successfully transitioned the parcel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = NewParcelInfoDto.class))),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))),
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
         @ApiResponse(responseCode = "409", description = "A parcel with the specified trackingID is already in the system.") })
     @RequestMapping(value = "/parcel/{trackingId}",
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<NewParcelInfo> transitionParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Parcel body);
+    ResponseEntity<NewParcelInfoDto> transitionParcel(@Pattern(regexp="^[A-Z0-9]{9}$") @Parameter(in = ParameterIn.PATH, description = "The tracking ID of the parcel. E.g. PYJRB4HZ6 ", required=true, schema=@Schema()) @PathVariable("trackingId") String trackingId, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody ParcelDto body);
 
 }
 

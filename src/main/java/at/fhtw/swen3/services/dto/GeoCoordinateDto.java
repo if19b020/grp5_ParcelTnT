@@ -14,14 +14,14 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class GeoCoordinate {
+public class GeoCoordinateDto {
   @JsonProperty("lat")
   private Double lat = null;
 
   @JsonProperty("lon")
   private Double lon = null;
 
-  public GeoCoordinate lat(Double lat) {
+  public GeoCoordinateDto lat(Double lat) {
     this.lat = lat;
     return this;
   }
@@ -41,7 +41,7 @@ public class GeoCoordinate {
     this.lat = lat;
   }
 
-  public GeoCoordinate lon(Double lon) {
+  public GeoCoordinateDto lon(Double lon) {
     this.lon = lon;
     return this;
   }
@@ -70,7 +70,7 @@ public class GeoCoordinate {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GeoCoordinate geoCoordinate = (GeoCoordinate) o;
+    GeoCoordinateDto geoCoordinate = (GeoCoordinateDto) o;
     return Objects.equals(this.lat, geoCoordinate.lat) &&
         Objects.equals(this.lon, geoCoordinate.lon);
   }

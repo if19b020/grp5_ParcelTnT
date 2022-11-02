@@ -4,12 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 //import javax.persistence.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 //@Entity
-public class ParcelEntity {
+public class Parcel {
 
     public enum StateEnum {
         PICKUP("Pickup"),
@@ -33,10 +34,10 @@ public class ParcelEntity {
     private Float weight = null;
     //@OneToOne
     //@JoinColumn(name = "recipient_name")
-    private RecipientEntity recipient = null;
+    private Recipient recipient = null;
     //@OneToOne
     //@JoinColumn(name = "sender_name")
-    private RecipientEntity sender = null;
+    private Recipient sender = null;
 
     //@Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)

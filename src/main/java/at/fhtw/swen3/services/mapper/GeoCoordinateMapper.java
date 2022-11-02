@@ -1,6 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.services.dto.GeoCoordinate;
+import at.fhtw.swen3.services.dto.GeoCoordinateDto;
+import at.fhtw.swen3.persistence.entity.GeoCoordinate;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -8,6 +9,6 @@ import org.mapstruct.factory.Mappers;
 public interface GeoCoordinateMapper {
     GeoCoordinateMapper INSTANCE = Mappers.getMapper(GeoCoordinateMapper.class);
 
-    at.fhtw.swen3.persistence.entity.GeoCoordinate dtoToEntity(GeoCoordinate geoCoordinate);
-    GeoCoordinate entityToDto(at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate);
+    GeoCoordinate dtoToEntity(GeoCoordinateDto geoCoordinate);
+    GeoCoordinateDto entityToDto(GeoCoordinate geoCoordinate);
 }

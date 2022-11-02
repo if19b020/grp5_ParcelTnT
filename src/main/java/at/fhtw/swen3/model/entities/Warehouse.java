@@ -4,15 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 //import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 //@Entity
-public class TruckEntity {
+public class Warehouse {
     //@Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column
-    private String regionGeoJson = null;
-    //@Column
-    private String numberPlate = null;
+    private Integer level = null;
+
+    //private List<WarehouseNextHops> nextHops = new ArrayList<WarehouseNextHops>();
+
 }

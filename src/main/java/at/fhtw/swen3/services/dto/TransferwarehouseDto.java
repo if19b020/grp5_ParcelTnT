@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class Transferwarehouse extends Hop {
+public class TransferwarehouseDto extends HopDto {
   @JsonProperty("regionGeoJson")
   private String regionGeoJson = null;
 
@@ -24,7 +24,7 @@ public class Transferwarehouse extends Hop {
   @JsonProperty("logisticsPartnerUrl")
   private String logisticsPartnerUrl = null;
 
-  public Transferwarehouse regionGeoJson(String regionGeoJson) {
+  public TransferwarehouseDto regionGeoJson(String regionGeoJson) {
     this.regionGeoJson = regionGeoJson;
     return this;
   }
@@ -44,7 +44,7 @@ public class Transferwarehouse extends Hop {
     this.regionGeoJson = regionGeoJson;
   }
 
-  public Transferwarehouse logisticsPartner(String logisticsPartner) {
+  public TransferwarehouseDto logisticsPartner(String logisticsPartner) {
     this.logisticsPartner = logisticsPartner;
     return this;
   }
@@ -64,7 +64,7 @@ public class Transferwarehouse extends Hop {
     this.logisticsPartner = logisticsPartner;
   }
 
-  public Transferwarehouse logisticsPartnerUrl(String logisticsPartnerUrl) {
+  public TransferwarehouseDto logisticsPartnerUrl(String logisticsPartnerUrl) {
     this.logisticsPartnerUrl = logisticsPartnerUrl;
     return this;
   }
@@ -93,7 +93,7 @@ public class Transferwarehouse extends Hop {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Transferwarehouse transferwarehouse = (Transferwarehouse) o;
+    TransferwarehouseDto transferwarehouse = (TransferwarehouseDto) o;
     return Objects.equals(this.regionGeoJson, transferwarehouse.regionGeoJson) &&
         Objects.equals(this.logisticsPartner, transferwarehouse.logisticsPartner) &&
         Objects.equals(this.logisticsPartnerUrl, transferwarehouse.logisticsPartnerUrl) &&

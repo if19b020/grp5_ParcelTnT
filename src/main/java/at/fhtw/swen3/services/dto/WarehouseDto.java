@@ -16,15 +16,15 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class Warehouse extends Hop {
+public class WarehouseDto extends HopDto {
   @JsonProperty("level")
   private Integer level = null;
 
   @JsonProperty("nextHops")
   @Valid
-  private List<WarehouseNextHops> nextHops = new ArrayList<WarehouseNextHops>();
+  private List<WarehouseNextHopsDto> nextHops = new ArrayList<WarehouseNextHopsDto>();
 
-  public Warehouse level(Integer level) {
+  public WarehouseDto level(Integer level) {
     this.level = level;
     return this;
   }
@@ -44,12 +44,12 @@ public class Warehouse extends Hop {
     this.level = level;
   }
 
-  public Warehouse nextHops(List<WarehouseNextHops> nextHops) {
+  public WarehouseDto nextHops(List<WarehouseNextHopsDto> nextHops) {
     this.nextHops = nextHops;
     return this;
   }
 
-  public Warehouse addNextHopsItem(WarehouseNextHops nextHopsItem) {
+  public WarehouseDto addNextHopsItem(WarehouseNextHopsDto nextHopsItem) {
     this.nextHops.add(nextHopsItem);
     return this;
   }
@@ -61,11 +61,11 @@ public class Warehouse extends Hop {
   @Schema(required = true, description = "Next hops after this warehouse (warehouses or trucks).")
       @NotNull
     @Valid
-    public List<WarehouseNextHops> getNextHops() {
+    public List<WarehouseNextHopsDto> getNextHops() {
     return nextHops;
   }
 
-  public void setNextHops(List<WarehouseNextHops> nextHops) {
+  public void setNextHops(List<WarehouseNextHopsDto> nextHops) {
     this.nextHops = nextHops;
   }
 
@@ -78,7 +78,7 @@ public class Warehouse extends Hop {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Warehouse warehouse = (Warehouse) o;
+    WarehouseDto warehouse = (WarehouseDto) o;
     return Objects.equals(this.level, warehouse.level) &&
         Objects.equals(this.nextHops, warehouse.nextHops) &&
         super.equals(o);

@@ -8,14 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 //@Entity
-public class WarehouseNextHopsEntity {
+public class Transferwarehouse {
     //@Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column
-    private Integer traveltimeMins = null;
-
-    //@OneToOne
-
-    //@JoinColumn(name = "hop_hop_type")
-    private HopEntity hop = null;
+    private String regionGeoJson = null;
+    //@Column
+    private String logisticsPartner = null;
+    //@Column
+    private String logisticsPartnerUrl = null;
 }

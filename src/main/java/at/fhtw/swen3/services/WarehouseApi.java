@@ -5,9 +5,9 @@
  */
 package at.fhtw.swen3.services;
 
-import at.fhtw.swen3.services.dto.Error;
-import at.fhtw.swen3.services.dto.Hop;
-import at.fhtw.swen3.services.dto.Warehouse;
+import at.fhtw.swen3.services.dto.ErrorDto;
+import at.fhtw.swen3.services.dto.HopDto;
+import at.fhtw.swen3.services.dto.WarehouseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -30,40 +30,40 @@ public interface WarehouseApi {
 
     @Operation(summary = "Exports the hierarchy of Warehouse and Truck objects. ", description = "", tags={ "warehouse-management" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Successful response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Warehouse.class))),
+        @ApiResponse(responseCode = "200", description = "Successful response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = WarehouseDto.class))),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))),
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
         @ApiResponse(responseCode = "404", description = "No hierarchy loaded yet.") })
     @RequestMapping(value = "/warehouse",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Warehouse> exportWarehouses();
+    ResponseEntity<WarehouseDto> exportWarehouses();
 
 
     @Operation(summary = "Get a certain warehouse or truck by code", description = "", tags={ "warehouse-management" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Successful response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Hop.class))),
+        @ApiResponse(responseCode = "200", description = "Successful response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = HopDto.class))),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))),
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
         @ApiResponse(responseCode = "404", description = "No hop with the specified id could be found.") })
     @RequestMapping(value = "/warehouse/{code}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Hop> getWarehouse(@Parameter(in = ParameterIn.PATH, description = "", required=true, schema=@Schema()) @PathVariable("code") String code);
+    ResponseEntity<HopDto> getWarehouse(@Parameter(in = ParameterIn.PATH, description = "", required=true, schema=@Schema()) @PathVariable("code") String code);
 
 
     @Operation(summary = "Imports a hierarchy of Warehouse and Truck objects. ", description = "", tags={ "warehouse-management" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Successfully loaded."),
         
-        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))) })
+        @ApiResponse(responseCode = "400", description = "The operation failed due to an error.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
     @RequestMapping(value = "/warehouse",
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> importWarehouses(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Warehouse body);
+    ResponseEntity<Void> importWarehouses(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody WarehouseDto body);
 
 }
 

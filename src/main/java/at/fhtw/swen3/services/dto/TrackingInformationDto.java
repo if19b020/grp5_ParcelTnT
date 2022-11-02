@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class TrackingInformation {
+public class TrackingInformationDto {
   /**
    * State of the parcel.
    */
@@ -61,13 +61,13 @@ public class TrackingInformation {
 
   @JsonProperty("visitedHops")
   @Valid
-  private List<HopArrival> visitedHops = new ArrayList<HopArrival>();
+  private List<HopArrivalDto> visitedHops = new ArrayList<HopArrivalDto>();
 
   @JsonProperty("futureHops")
   @Valid
-  private List<HopArrival> futureHops = new ArrayList<HopArrival>();
+  private List<HopArrivalDto> futureHops = new ArrayList<HopArrivalDto>();
 
-  public TrackingInformation state(StateEnum state) {
+  public TrackingInformationDto state(StateEnum state) {
     this.state = state;
     return this;
   }
@@ -87,12 +87,12 @@ public class TrackingInformation {
     this.state = state;
   }
 
-  public TrackingInformation visitedHops(List<HopArrival> visitedHops) {
+  public TrackingInformationDto visitedHops(List<HopArrivalDto> visitedHops) {
     this.visitedHops = visitedHops;
     return this;
   }
 
-  public TrackingInformation addVisitedHopsItem(HopArrival visitedHopsItem) {
+  public TrackingInformationDto addVisitedHopsItem(HopArrivalDto visitedHopsItem) {
     this.visitedHops.add(visitedHopsItem);
     return this;
   }
@@ -104,20 +104,20 @@ public class TrackingInformation {
   @Schema(required = true, description = "Hops visited in the past.")
       @NotNull
     @Valid
-    public List<HopArrival> getVisitedHops() {
+    public List<HopArrivalDto> getVisitedHops() {
     return visitedHops;
   }
 
-  public void setVisitedHops(List<HopArrival> visitedHops) {
+  public void setVisitedHops(List<HopArrivalDto> visitedHops) {
     this.visitedHops = visitedHops;
   }
 
-  public TrackingInformation futureHops(List<HopArrival> futureHops) {
+  public TrackingInformationDto futureHops(List<HopArrivalDto> futureHops) {
     this.futureHops = futureHops;
     return this;
   }
 
-  public TrackingInformation addFutureHopsItem(HopArrival futureHopsItem) {
+  public TrackingInformationDto addFutureHopsItem(HopArrivalDto futureHopsItem) {
     this.futureHops.add(futureHopsItem);
     return this;
   }
@@ -129,11 +129,11 @@ public class TrackingInformation {
   @Schema(required = true, description = "Hops coming up in the future - their times are estimations.")
       @NotNull
     @Valid
-    public List<HopArrival> getFutureHops() {
+    public List<HopArrivalDto> getFutureHops() {
     return futureHops;
   }
 
-  public void setFutureHops(List<HopArrival> futureHops) {
+  public void setFutureHops(List<HopArrivalDto> futureHops) {
     this.futureHops = futureHops;
   }
 
@@ -146,7 +146,7 @@ public class TrackingInformation {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TrackingInformation trackingInformation = (TrackingInformation) o;
+    TrackingInformationDto trackingInformation = (TrackingInformationDto) o;
     return Objects.equals(this.state, trackingInformation.state) &&
         Objects.equals(this.visitedHops, trackingInformation.visitedHops) &&
         Objects.equals(this.futureHops, trackingInformation.futureHops);

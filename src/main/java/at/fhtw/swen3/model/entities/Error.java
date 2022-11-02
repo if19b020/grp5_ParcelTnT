@@ -9,17 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 //@Entity(name="error")
-public class ErrorEntity {
+public class Error {
     //@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column
     private String errorMessage = null;
 }
-
-/**
- * @Service
- * mit @Autowired
- * siehe slides
- * für businesslayer und testing
- * + entities mit ...Entity versehen
- * fr oder samstag nochmal checken, punkte
- */

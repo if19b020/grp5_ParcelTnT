@@ -1,5 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
+import at.fhtw.swen3.persistence.entity.HopArrival;
+import at.fhtw.swen3.persistence.entity.Recipient;
 import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.services.dto.*;
 import org.junit.Test;
@@ -16,30 +18,30 @@ public class ParcelEntityMapperTest {
 
     @Test
     public void multipleDtosToEntity() {
-        Recipient recipientDto = new Recipient();
+        RecipientDto recipientDto = new RecipientDto();
             recipientDto.setName("some name...");
             recipientDto.setStreet("some street...");
             recipientDto.setPostalCode("some code...");
             recipientDto.setCity("some city...");
             recipientDto.setCountry("some country...");
-        Parcel parcelDto = new Parcel();
+        ParcelDto parcelDto = new ParcelDto();
             parcelDto.setWeight(12.34f);
             parcelDto.setRecipient(recipientDto);
             parcelDto.setSender(recipientDto);
 
-        NewParcelInfo newParcelInfoDto = new NewParcelInfo();
+        NewParcelInfoDto newParcelInfoDto = new NewParcelInfoDto();
             newParcelInfoDto.setTrackingId("some tracking id...");
 
         OffsetDateTime time = OffsetDateTime.now();
-        HopArrival hopArrivalDto = new HopArrival();
+        HopArrivalDto hopArrivalDto = new HopArrivalDto();
             hopArrivalDto.setCode("some code...");
             hopArrivalDto.setDescription("some description...");
             hopArrivalDto.setDateTime(time);
-        List<HopArrival> visitedHopsDto = new ArrayList<HopArrival>();
+        List<HopArrivalDto> visitedHopsDto = new ArrayList<HopArrivalDto>();
             visitedHopsDto.add(hopArrivalDto);
 
-        TrackingInformation trackingInformationDto = new TrackingInformation();
-            trackingInformationDto.setState(TrackingInformation.StateEnum.INTRANSPORT);
+        TrackingInformationDto trackingInformationDto = new TrackingInformationDto();
+            trackingInformationDto.setState(TrackingInformationDto.StateEnum.INTRANSPORT);
             trackingInformationDto.setVisitedHops(visitedHopsDto);
             trackingInformationDto.setFutureHops(visitedHopsDto);
 
@@ -68,7 +70,7 @@ public class ParcelEntityMapperTest {
     }
     @Test
     public void entityToParcelDto(){
-        at.fhtw.swen3.persistence.entity.Recipient recipient = new at.fhtw.swen3.persistence.entity.Recipient();
+        Recipient recipient = new Recipient();
             recipient.setName("some name...");
             recipient.setStreet("some street...");
             recipient.setPostalCode("some code...");
@@ -76,11 +78,11 @@ public class ParcelEntityMapperTest {
             recipient.setCountry("some country...");
 
         OffsetDateTime time = OffsetDateTime.now();
-        at.fhtw.swen3.persistence.entity.HopArrival hopArrival = new at.fhtw.swen3.persistence.entity.HopArrival();
+        HopArrival hopArrival = new HopArrival();
             hopArrival.setCode("some code...");
             hopArrival.setDescription("some description...");
             hopArrival.setDateTime(time);
-        List<at.fhtw.swen3.persistence.entity.HopArrival> visitedHops = new ArrayList<at.fhtw.swen3.persistence.entity.HopArrival>();
+        List<HopArrival> visitedHops = new ArrayList<HopArrival>();
             visitedHops.add(hopArrival);
 
         ParcelEntity parcelEntity = new ParcelEntity();
@@ -92,7 +94,7 @@ public class ParcelEntityMapperTest {
             parcelEntity.setVisitedHops(visitedHops);
             parcelEntity.setFutureHops(visitedHops);
 
-        Parcel parcelDto = ParcelEntityMapper.INSTANCE.entityToParcelDto(parcelEntity);
+        ParcelDto parcelDto = ParcelEntityMapper.INSTANCE.entityToParcelDto(parcelEntity);
 
         assertEquals( "12.34", parcelDto.getWeight().toString());
         assertEquals( "some name...", parcelDto.getRecipient().getName());
@@ -108,7 +110,7 @@ public class ParcelEntityMapperTest {
     }
     @Test
     public void entityToNewParcelInfoDto(){
-        at.fhtw.swen3.persistence.entity.Recipient recipient = new at.fhtw.swen3.persistence.entity.Recipient();
+        Recipient recipient = new Recipient();
         recipient.setName("some name...");
         recipient.setStreet("some street...");
         recipient.setPostalCode("some code...");
@@ -116,11 +118,11 @@ public class ParcelEntityMapperTest {
         recipient.setCountry("some country...");
 
         OffsetDateTime time = OffsetDateTime.now();
-        at.fhtw.swen3.persistence.entity.HopArrival hopArrival = new at.fhtw.swen3.persistence.entity.HopArrival();
+        HopArrival hopArrival = new HopArrival();
         hopArrival.setCode("some code...");
         hopArrival.setDescription("some description...");
         hopArrival.setDateTime(time);
-        List<at.fhtw.swen3.persistence.entity.HopArrival> visitedHops = new ArrayList<at.fhtw.swen3.persistence.entity.HopArrival>();
+        List<HopArrival> visitedHops = new ArrayList<HopArrival>();
         visitedHops.add(hopArrival);
 
         ParcelEntity parcelEntity = new ParcelEntity();
@@ -132,13 +134,13 @@ public class ParcelEntityMapperTest {
         parcelEntity.setVisitedHops(visitedHops);
         parcelEntity.setFutureHops(visitedHops);
 
-        NewParcelInfo newParcelInfoDto = ParcelEntityMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
+        NewParcelInfoDto newParcelInfoDto = ParcelEntityMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
 
         assertEquals( "some tracking id...", newParcelInfoDto.getTrackingId());
     }
     @Test
     public void entityToTrackingInformationDto(){
-        at.fhtw.swen3.persistence.entity.Recipient recipient = new at.fhtw.swen3.persistence.entity.Recipient();
+        Recipient recipient = new Recipient();
         recipient.setName("some name...");
         recipient.setStreet("some street...");
         recipient.setPostalCode("some code...");
@@ -146,11 +148,11 @@ public class ParcelEntityMapperTest {
         recipient.setCountry("some country...");
 
         OffsetDateTime time = OffsetDateTime.now();
-        at.fhtw.swen3.persistence.entity.HopArrival hopArrival = new at.fhtw.swen3.persistence.entity.HopArrival();
+        HopArrival hopArrival = new HopArrival();
         hopArrival.setCode("some code...");
         hopArrival.setDescription("some description...");
         hopArrival.setDateTime(time);
-        List<at.fhtw.swen3.persistence.entity.HopArrival> visitedHops = new ArrayList<at.fhtw.swen3.persistence.entity.HopArrival>();
+        List<HopArrival> visitedHops = new ArrayList<HopArrival>();
         visitedHops.add(hopArrival);
 
         ParcelEntity parcelEntity = new ParcelEntity();
@@ -162,7 +164,7 @@ public class ParcelEntityMapperTest {
         parcelEntity.setVisitedHops(visitedHops);
         parcelEntity.setFutureHops(visitedHops);
 
-        TrackingInformation trackingInformationDto = ParcelEntityMapper.INSTANCE.entityToTrackingInformationDto(parcelEntity);
+        TrackingInformationDto trackingInformationDto = ParcelEntityMapper.INSTANCE.entityToTrackingInformationDto(parcelEntity);
 
         assertEquals( "InTransport", trackingInformationDto.getState().toString());
         assertEquals("some code...",trackingInformationDto.getVisitedHops().get(0).getCode());

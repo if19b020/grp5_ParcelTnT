@@ -8,13 +8,17 @@ import lombok.Setter;
 @Getter
 @Setter
 //@Entity
-public class TransferwarehouseEntity {
+public class Recipient {
     //@Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column
-    private String regionGeoJson = null;
+    private String name = null;
     //@Column
-    private String logisticsPartner = null;
+    private String street = null;
     //@Column
-    private String logisticsPartnerUrl = null;
+    private String postalCode = null;
+    //@Column
+    private String city = null;
+    //@Column
+    private String country = null;
 }
