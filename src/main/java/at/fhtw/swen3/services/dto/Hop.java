@@ -17,13 +17,13 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "hopType", visible = true )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = WarehouseDto.class, name = "warehouse"),
-        @JsonSubTypes.Type(value = TruckDto.class, name = "truck"),
-        @JsonSubTypes.Type(value = TransferwarehouseDto.class, name = "transferwarehouse"),
+        @JsonSubTypes.Type(value = Warehouse.class, name = "warehouse"),
+        @JsonSubTypes.Type(value = Truck.class, name = "truck"),
+        @JsonSubTypes.Type(value = Transferwarehouse.class, name = "transferwarehouse"),
 })
 
 
-public class HopDto {
+public class Hop {
   @JsonTypeId
   private String hopType = null;
 
@@ -40,9 +40,9 @@ public class HopDto {
   private String locationName = null;
 
   @JsonProperty("locationCoordinates")
-  private GeoCoordinateDto locationCoordinates = null;
+  private GeoCoordinate locationCoordinates = null;
 
-  public HopDto hopType(String hopType) {
+  public Hop hopType(String hopType) {
     this.hopType = hopType;
     return this;
   }
@@ -62,7 +62,7 @@ public class HopDto {
     this.hopType = hopType;
   }
 
-  public HopDto code(String code) {
+  public Hop code(String code) {
     this.code = code;
     return this;
   }
@@ -82,7 +82,7 @@ public class HopDto {
     this.code = code;
   }
 
-  public HopDto description(String description) {
+  public Hop description(String description) {
     this.description = description;
     return this;
   }
@@ -102,7 +102,7 @@ public class HopDto {
     this.description = description;
   }
 
-  public HopDto processingDelayMins(Integer processingDelayMins) {
+  public Hop processingDelayMins(Integer processingDelayMins) {
     this.processingDelayMins = processingDelayMins;
     return this;
   }
@@ -122,7 +122,7 @@ public class HopDto {
     this.processingDelayMins = processingDelayMins;
   }
 
-  public HopDto locationName(String locationName) {
+  public Hop locationName(String locationName) {
     this.locationName = locationName;
     return this;
   }
@@ -142,7 +142,7 @@ public class HopDto {
     this.locationName = locationName;
   }
 
-  public HopDto locationCoordinates(GeoCoordinateDto locationCoordinates) {
+  public Hop locationCoordinates(GeoCoordinate locationCoordinates) {
     this.locationCoordinates = locationCoordinates;
     return this;
   }
@@ -155,11 +155,11 @@ public class HopDto {
       @NotNull
 
     @Valid
-    public GeoCoordinateDto getLocationCoordinates() {
+    public GeoCoordinate getLocationCoordinates() {
     return locationCoordinates;
   }
 
-  public void setLocationCoordinates(GeoCoordinateDto locationCoordinates) {
+  public void setLocationCoordinates(GeoCoordinate locationCoordinates) {
     this.locationCoordinates = locationCoordinates;
   }
 
@@ -172,7 +172,7 @@ public class HopDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HopDto hop = (HopDto) o;
+    Hop hop = (Hop) o;
     return Objects.equals(this.hopType, hop.hopType) &&
         Objects.equals(this.code, hop.code) &&
         Objects.equals(this.description, hop.description) &&
