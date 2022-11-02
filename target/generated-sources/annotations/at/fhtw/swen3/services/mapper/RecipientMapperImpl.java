@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:21:49+0100",
+    date = "2022-11-02T18:26:22+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class RecipientMapperImpl implements RecipientMapper {
@@ -18,6 +18,12 @@ public class RecipientMapperImpl implements RecipientMapper {
 
         at.fhtw.swen3.persistence.entity.Recipient recipient1 = new at.fhtw.swen3.persistence.entity.Recipient();
 
+        recipient1.setName( recipient.getName() );
+        recipient1.setStreet( recipient.getStreet() );
+        recipient1.setPostalCode( recipient.getPostalCode() );
+        recipient1.setCity( recipient.getCity() );
+        recipient1.setCountry( recipient.getCountry() );
+
         return recipient1;
     }
 
@@ -28,6 +34,12 @@ public class RecipientMapperImpl implements RecipientMapper {
         }
 
         Recipient recipient1 = new Recipient();
+
+        recipient1.setName( recipient.getName() );
+        recipient1.setStreet( recipient.getStreet() );
+        recipient1.setPostalCode( recipient.getPostalCode() );
+        recipient1.setCity( recipient.getCity() );
+        recipient1.setCountry( recipient.getCountry() );
 
         return recipient1;
     }

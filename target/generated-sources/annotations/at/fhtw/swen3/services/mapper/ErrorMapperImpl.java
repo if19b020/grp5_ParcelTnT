@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:21:49+0100",
+    date = "2022-11-02T18:26:22+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class ErrorMapperImpl implements ErrorMapper {
@@ -18,6 +18,8 @@ public class ErrorMapperImpl implements ErrorMapper {
 
         Error error1 = new Error();
 
+        error1.setErrorMessage( error.getErrorMessage() );
+
         return error1;
     }
 
@@ -28,6 +30,8 @@ public class ErrorMapperImpl implements ErrorMapper {
         }
 
         at.fhtw.swen3.persistence.entity.Error error = new at.fhtw.swen3.persistence.entity.Error();
+
+        error.setErrorMessage( errorDto.getErrorMessage() );
 
         return error;
     }

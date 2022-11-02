@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T18:21:49+0100",
+    date = "2022-11-02T18:26:22+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
@@ -18,6 +18,10 @@ public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
 
         Transferwarehouse transferwarehouse = new Transferwarehouse();
 
+        transferwarehouse.setRegionGeoJson( transferwarehouseDto.getRegionGeoJson() );
+        transferwarehouse.setLogisticsPartner( transferwarehouseDto.getLogisticsPartner() );
+        transferwarehouse.setLogisticsPartnerUrl( transferwarehouseDto.getLogisticsPartnerUrl() );
+
         return transferwarehouse;
     }
 
@@ -28,6 +32,10 @@ public class TransferwarehouseMapperImpl implements TransferwarehouseMapper {
         }
 
         at.fhtw.swen3.services.dto.Transferwarehouse transferwarehouse1 = new at.fhtw.swen3.services.dto.Transferwarehouse();
+
+        transferwarehouse1.setRegionGeoJson( transferwarehouse.getRegionGeoJson() );
+        transferwarehouse1.setLogisticsPartner( transferwarehouse.getLogisticsPartner() );
+        transferwarehouse1.setLogisticsPartnerUrl( transferwarehouse.getLogisticsPartnerUrl() );
 
         return transferwarehouse1;
     }
