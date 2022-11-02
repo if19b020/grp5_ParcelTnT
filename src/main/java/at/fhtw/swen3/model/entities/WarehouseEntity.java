@@ -4,18 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 //import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 //@Entity
-public class WarehouseNextHops {
+public class WarehouseEntity {
     //@Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column
-    private Integer traveltimeMins = null;
+    private Integer level = null;
 
-    //@OneToOne
+    //private List<WarehouseNextHops> nextHops = new ArrayList<WarehouseNextHops>();
 
-    //@JoinColumn(name = "hop_hop_type")
-    private Hop hop = null;
 }

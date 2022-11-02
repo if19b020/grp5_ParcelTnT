@@ -15,17 +15,17 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class ParcelDto {
+public class Parcel {
   @JsonProperty("weight")
   private Float weight = null;
 
   @JsonProperty("recipient")
-  private RecipientDto recipient = null;
+  private Recipient recipient = null;
 
   @JsonProperty("sender")
-  private RecipientDto sender = null;
+  private Recipient sender = null;
 
-  public ParcelDto weight(Float weight) {
+  public Parcel weight(Float weight) {
     this.weight = weight;
     return this;
   }
@@ -45,7 +45,7 @@ public class ParcelDto {
     this.weight = weight;
   }
 
-  public ParcelDto recipient(RecipientDto recipient) {
+  public Parcel recipient(Recipient recipient) {
     this.recipient = recipient;
     return this;
   }
@@ -58,15 +58,15 @@ public class ParcelDto {
       @NotNull
 
     @Valid
-    public RecipientDto getRecipient() {
+    public Recipient getRecipient() {
     return recipient;
   }
 
-  public void setRecipient(RecipientDto recipient) {
+  public void setRecipient(Recipient recipient) {
     this.recipient = recipient;
   }
 
-  public ParcelDto sender(RecipientDto sender) {
+  public Parcel sender(Recipient sender) {
     this.sender = sender;
     return this;
   }
@@ -79,11 +79,11 @@ public class ParcelDto {
       @NotNull
 
     @Valid
-    public RecipientDto getSender() {
+    public Recipient getSender() {
     return sender;
   }
 
-  public void setSender(RecipientDto sender) {
+  public void setSender(Recipient sender) {
     this.sender = sender;
   }
 
@@ -96,7 +96,7 @@ public class ParcelDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParcelDto parcel = (ParcelDto) o;
+    Parcel parcel = (Parcel) o;
     return Objects.equals(this.weight, parcel.weight) &&
         Objects.equals(this.recipient, parcel.recipient) &&
         Objects.equals(this.sender, parcel.sender);

@@ -1,8 +1,8 @@
 package at.fhtw.swen3.services.impl;
 
 import at.fhtw.swen3.services.WarehouseApi;
-import at.fhtw.swen3.services.dto.HopDto;
-import at.fhtw.swen3.services.dto.WarehouseDto;
+import at.fhtw.swen3.services.dto.Hop;
+import at.fhtw.swen3.services.dto.Warehouse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -35,35 +35,35 @@ public class WarehouseApiController implements WarehouseApi {
         this.request = request;
     }
 
-    public ResponseEntity<WarehouseDto> exportWarehouses() {
+    public ResponseEntity<Warehouse> exportWarehouses() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<WarehouseDto>(objectMapper.readValue("\"\"", WarehouseDto.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Warehouse>(objectMapper.readValue("\"\"", Warehouse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<WarehouseDto>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<Warehouse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<WarehouseDto>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Warehouse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<HopDto> getWarehouse(@Parameter(in = ParameterIn.PATH, description = "", required=true, schema=@Schema()) @PathVariable("code") String code) {
+    public ResponseEntity<Hop> getWarehouse(@Parameter(in = ParameterIn.PATH, description = "", required=true, schema=@Schema()) @PathVariable("code") String code) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<HopDto>(objectMapper.readValue("{\n  \"code\" : \"code\",\n  \"locationName\" : \"locationName\",\n  \"processingDelayMins\" : 0,\n  \"hopType\" : \"hopType\",\n  \"description\" : \"description\",\n  \"locationCoordinates\" : {\n    \"lon\" : 1.4658129805029452,\n    \"lat\" : 6.027456183070403\n  }\n}", HopDto.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Hop>(objectMapper.readValue("{\n  \"code\" : \"code\",\n  \"locationName\" : \"locationName\",\n  \"processingDelayMins\" : 0,\n  \"hopType\" : \"hopType\",\n  \"description\" : \"description\",\n  \"locationCoordinates\" : {\n    \"lon\" : 1.4658129805029452,\n    \"lat\" : 6.027456183070403\n  }\n}", Hop.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<HopDto>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<Hop>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<HopDto>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Hop>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> importWarehouses(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody WarehouseDto body) {
+    public ResponseEntity<Void> importWarehouses(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Warehouse body) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }

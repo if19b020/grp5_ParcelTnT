@@ -1,8 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
 
-import at.fhtw.swen3.services.dto.RecipientDto;
-import at.fhtw.swen3.persistence.entity.Recipient;
+import at.fhtw.swen3.services.dto.Recipient;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,6 +9,6 @@ import org.mapstruct.factory.Mappers;
 public interface RecipientMapper {
     RecipientMapper INSTANCE = Mappers.getMapper(RecipientMapper.class);
 
-    Recipient dtoToEntity(RecipientDto recipient);
-    RecipientDto entityToDto(Recipient recipient);
+    at.fhtw.swen3.persistence.entity.Recipient dtoToEntity(Recipient recipient);
+    Recipient entityToDto(at.fhtw.swen3.persistence.entity.Recipient recipient);
 }

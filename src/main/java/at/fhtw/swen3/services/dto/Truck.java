@@ -14,14 +14,14 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class TruckDto extends HopDto {
+public class Truck extends Hop {
   @JsonProperty("regionGeoJson")
   private String regionGeoJson = null;
 
   @JsonProperty("numberPlate")
   private String numberPlate = null;
 
-  public TruckDto regionGeoJson(String regionGeoJson) {
+  public Truck regionGeoJson(String regionGeoJson) {
     this.regionGeoJson = regionGeoJson;
     return this;
   }
@@ -41,7 +41,7 @@ public class TruckDto extends HopDto {
     this.regionGeoJson = regionGeoJson;
   }
 
-  public TruckDto numberPlate(String numberPlate) {
+  public Truck numberPlate(String numberPlate) {
     this.numberPlate = numberPlate;
     return this;
   }
@@ -70,7 +70,7 @@ public class TruckDto extends HopDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TruckDto truck = (TruckDto) o;
+    Truck truck = (Truck) o;
     return Objects.equals(this.regionGeoJson, truck.regionGeoJson) &&
         Objects.equals(this.numberPlate, truck.numberPlate) &&
         super.equals(o);

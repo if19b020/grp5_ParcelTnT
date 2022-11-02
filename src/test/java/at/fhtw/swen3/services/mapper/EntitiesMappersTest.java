@@ -1,8 +1,14 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.*;
-import at.fhtw.swen3.persistence.entity.Error;
-import at.fhtw.swen3.services.dto.*;
+import at.fhtw.swen3.services.dto.Error;
+import at.fhtw.swen3.services.dto.GeoCoordinate;
+import at.fhtw.swen3.services.dto.Hop;
+import at.fhtw.swen3.services.dto.HopArrival;
+import at.fhtw.swen3.services.dto.Recipient;
+import at.fhtw.swen3.services.dto.Transferwarehouse;
+import at.fhtw.swen3.services.dto.Truck;
+import at.fhtw.swen3.services.dto.Warehouse;
+import at.fhtw.swen3.services.dto.WarehouseNextHops;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.threeten.bp.OffsetDateTime;
@@ -18,19 +24,19 @@ public class EntitiesMappersTest {
     //Error
     @Test
     public void errorToErrorDto(){
-        Error error = new Error();
+        at.fhtw.swen3.persistence.entity.Error error = new at.fhtw.swen3.persistence.entity.Error();
         error.setErrorMessage("some error message...");
 
-        ErrorDto errorDto = ErrorMapper.INSTANCE.entityToDto(error);
+        Error errorDto = ErrorMapper.INSTANCE.entityToDto(error);
 
         assertEquals( "some error message...", errorDto.getErrorMessage());
     }
     @Test
     public void errorDtoToError(){
-        ErrorDto errorDto = new ErrorDto();
+        Error errorDto = new Error();
         errorDto.setErrorMessage("some error message...");
 
-        Error error = ErrorMapper.INSTANCE.dtoToEntity(errorDto);
+        at.fhtw.swen3.persistence.entity.Error error = ErrorMapper.INSTANCE.dtoToEntity(errorDto);
 
         assertEquals( "some error message...", error.getErrorMessage());
     }
@@ -38,22 +44,22 @@ public class EntitiesMappersTest {
     //GeoCoordinate
     @Test
     public void geoCoordinateToGeoCoordinateDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate = new at.fhtw.swen3.persistence.entity.GeoCoordinate();
         geoCoordinate.setLat(34.4);
         geoCoordinate.setLon(56.6);
 
-        GeoCoordinateDto geoCoordinateDto = GeoCoordinateMapper.INSTANCE.entityToDto(geoCoordinate);
+        GeoCoordinate geoCoordinateDto = GeoCoordinateMapper.INSTANCE.entityToDto(geoCoordinate);
 
         assertEquals( "34.4", geoCoordinateDto.getLat().toString());
         assertEquals( "56.6", geoCoordinateDto.getLon().toString());
     }
     @Test
     public void geoCoordinateDtoToGeoCoordinate(){
-        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+        GeoCoordinate geoCoordinateDto = new GeoCoordinate();
         geoCoordinateDto.setLat(34.4);
         geoCoordinateDto.setLon(56.6);
 
-        GeoCoordinate geoCoordinate = GeoCoordinateMapper.INSTANCE.dtoToEntity(geoCoordinateDto);
+        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate = GeoCoordinateMapper.INSTANCE.dtoToEntity(geoCoordinateDto);
 
         assertEquals( "34.4", geoCoordinate.getLat().toString());
         assertEquals( "56.6", geoCoordinate.getLon().toString());
@@ -62,10 +68,10 @@ public class EntitiesMappersTest {
     //Hop
     @Test
     public void hopToHopDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate = new at.fhtw.swen3.persistence.entity.GeoCoordinate();
         geoCoordinate.setLon(3.3);
         geoCoordinate.setLat(4.4);
-        Hop hop = new Hop();
+        at.fhtw.swen3.persistence.entity.Hop hop = new at.fhtw.swen3.persistence.entity.Hop();
         hop.setHopType("some type...");
         hop.setCode("some code...");
         hop.setDescription("some description...");
@@ -73,7 +79,7 @@ public class EntitiesMappersTest {
         hop.setLocationName("some name...");
         hop.setLocationCoordinates(geoCoordinate);
 
-        HopDto hopDto = HopMapper.INSTANCE.entityToDto(hop);
+        Hop hopDto = HopMapper.INSTANCE.entityToDto(hop);
 
         assertEquals("some type...",hopDto.getHopType());
         assertEquals("some code...",hopDto.getCode());
@@ -85,10 +91,10 @@ public class EntitiesMappersTest {
     }
     @Test
     public void hopDtoToHop(){
-        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+        GeoCoordinate geoCoordinateDto = new GeoCoordinate();
         geoCoordinateDto.setLon(3.3);
         geoCoordinateDto.setLat(4.4);
-        HopDto hopDto = new HopDto();
+        Hop hopDto = new Hop();
         hopDto.setHopType("some type...");
         hopDto.setCode("some code...");
         hopDto.setDescription("some description...");
@@ -96,7 +102,7 @@ public class EntitiesMappersTest {
         hopDto.setLocationName("some name...");
         hopDto.setLocationCoordinates(geoCoordinateDto);
 
-        Hop hop = HopMapper.INSTANCE.dtoToEntity(hopDto);
+        at.fhtw.swen3.persistence.entity.Hop hop = HopMapper.INSTANCE.dtoToEntity(hopDto);
 
         assertEquals("some type...",hop.getHopType());
         assertEquals("some code...",hop.getCode());
@@ -111,12 +117,12 @@ public class EntitiesMappersTest {
     @Test
     public void hopArrivalToHopArrivalDto(){
         OffsetDateTime time = OffsetDateTime.now();
-        HopArrival hopArrival = new HopArrival();
+        at.fhtw.swen3.persistence.entity.HopArrival hopArrival = new at.fhtw.swen3.persistence.entity.HopArrival();
         hopArrival.setCode("some code...");
         hopArrival.setDescription("some description...");
         hopArrival.setDateTime(time);
 
-        HopArrivalDto hopArrivalDto = HopArrivalMapper.INSTANCE.entityToDto(hopArrival);
+        HopArrival hopArrivalDto = HopArrivalMapper.INSTANCE.entityToDto(hopArrival);
 
         assertEquals("some code...",hopArrivalDto.getCode());
         assertEquals("some description...",hopArrivalDto.getDescription());
@@ -125,12 +131,12 @@ public class EntitiesMappersTest {
     @Test
     public void hopArrivalDtoToHopArrival(){
         OffsetDateTime time = OffsetDateTime.now();
-        HopArrivalDto hopArrivalDto = new HopArrivalDto();
+        HopArrival hopArrivalDto = new HopArrival();
         hopArrivalDto.setCode("some code...");
         hopArrivalDto.setDescription("some description...");
         hopArrivalDto.setDateTime(time);
 
-        HopArrival hopArrival = HopArrivalMapper.INSTANCE.dtoToEntity(hopArrivalDto);
+        at.fhtw.swen3.persistence.entity.HopArrival hopArrival = HopArrivalMapper.INSTANCE.dtoToEntity(hopArrivalDto);
 
         assertEquals("some code...",hopArrival.getCode());
         assertEquals("some description...",hopArrival.getDescription());
@@ -140,14 +146,14 @@ public class EntitiesMappersTest {
     //Recipient
     @Test
     public void recipientToRecipientDto(){
-        Recipient recipient = new Recipient();
+        at.fhtw.swen3.persistence.entity.Recipient recipient = new at.fhtw.swen3.persistence.entity.Recipient();
         recipient.setName("some name...");
         recipient.setStreet("some street...");
         recipient.setPostalCode("some code...");
         recipient.setCity("some city...");
         recipient.setCountry("some country...");
 
-        RecipientDto recipientDto = RecipientMapper.INSTANCE.entityToDto(recipient);
+        Recipient recipientDto = RecipientMapper.INSTANCE.entityToDto(recipient);
 
         assertEquals("some name...",recipientDto.getName());
         assertEquals("some street...",recipientDto.getStreet());
@@ -157,14 +163,14 @@ public class EntitiesMappersTest {
     }
     @Test
     public void recipientDtoToRecipient(){
-        RecipientDto recipientDto = new RecipientDto();
+        Recipient recipientDto = new Recipient();
         recipientDto.setName("some name...");
         recipientDto.setStreet("some street...");
         recipientDto.setPostalCode("some code...");
         recipientDto.setCity("some city...");
         recipientDto.setCountry("some country...");
 
-        Recipient recipient = RecipientMapper.INSTANCE.dtoToEntity(recipientDto);
+        at.fhtw.swen3.persistence.entity.Recipient recipient = RecipientMapper.INSTANCE.dtoToEntity(recipientDto);
 
         assertEquals("some name...",recipient.getName());
         assertEquals("some street...",recipient.getStreet());
@@ -176,12 +182,12 @@ public class EntitiesMappersTest {
     //Transfarewarehouse
     @Test
     public void transfarewarehouseToTransferwarehouseDto(){
-        Transferwarehouse transferwarehouse = new Transferwarehouse();
+        at.fhtw.swen3.persistence.entity.Transferwarehouse transferwarehouse = new at.fhtw.swen3.persistence.entity.Transferwarehouse();
         transferwarehouse.setRegionGeoJson("some text...");
         transferwarehouse.setLogisticsPartner("some text...");
         transferwarehouse.setLogisticsPartnerUrl("some text...");
 
-        TransferwarehouseDto transferwarehouseDto = TransferwarehouseMapper.INSTANCE.entityToDto(transferwarehouse);
+        Transferwarehouse transferwarehouseDto = TransferwarehouseMapper.INSTANCE.entityToDto(transferwarehouse);
 
         assertEquals("some text...",transferwarehouseDto.getRegionGeoJson());
         assertEquals("some text...",transferwarehouseDto.getLogisticsPartner());
@@ -189,12 +195,12 @@ public class EntitiesMappersTest {
     }
     @Test
     public void transfarewarehouseDtoToTransferwarehouse(){
-        TransferwarehouseDto transferwarehouseDto = new TransferwarehouseDto();
+        Transferwarehouse transferwarehouseDto = new Transferwarehouse();
         transferwarehouseDto.setRegionGeoJson("some text...");
         transferwarehouseDto.setLogisticsPartner("some text...");
         transferwarehouseDto.setLogisticsPartnerUrl("some text...");
 
-        Transferwarehouse transferwarehouse = TransferwarehouseMapper.INSTANCE.dtoToEntity(transferwarehouseDto);
+        at.fhtw.swen3.persistence.entity.Transferwarehouse transferwarehouse = TransferwarehouseMapper.INSTANCE.dtoToEntity(transferwarehouseDto);
 
         assertEquals("some text...",transferwarehouse.getRegionGeoJson());
         assertEquals("some text...",transferwarehouse.getLogisticsPartner());
@@ -204,22 +210,22 @@ public class EntitiesMappersTest {
     //Truck
     @Test
     public void truckToTruckDto(){
-        Truck truck = new Truck();
+        at.fhtw.swen3.persistence.entity.Truck truck = new at.fhtw.swen3.persistence.entity.Truck();
         truck.setRegionGeoJson("some geo...");
         truck.setNumberPlate("1234");
 
-        TruckDto truckDto = TruckMapper.INSTANCE.entityToDto(truck);
+        Truck truckDto = TruckMapper.INSTANCE.entityToDto(truck);
 
         assertEquals("some geo...",truckDto.getRegionGeoJson());
         assertEquals("1234",truckDto.getNumberPlate());
     }
     @Test
     public void truckDtoToTruck(){
-        TruckDto truckDto = new TruckDto();
+        Truck truckDto = new Truck();
         truckDto.setRegionGeoJson("some geo...");
         truckDto.setNumberPlate("1234");
 
-        Truck truck = TruckMapper.INSTANCE.dtoToEntity(truckDto);
+        at.fhtw.swen3.persistence.entity.Truck truck = TruckMapper.INSTANCE.dtoToEntity(truckDto);
 
         assertEquals("some geo...",truck.getRegionGeoJson());
         assertEquals("1234",truck.getNumberPlate());
@@ -228,21 +234,21 @@ public class EntitiesMappersTest {
     //WarehouseNextHops
     @Test
     public void warehouseNextHopsToWarehouseNextHopsDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate = new at.fhtw.swen3.persistence.entity.GeoCoordinate();
         geoCoordinate.setLon(3.3);
         geoCoordinate.setLat(4.4);
-        Hop hop = new Hop();
+        at.fhtw.swen3.persistence.entity.Hop hop = new at.fhtw.swen3.persistence.entity.Hop();
         hop.setHopType("some type...");
         hop.setCode("some code...");
         hop.setDescription("some description...");
         hop.setProcessingDelayMins(3);
         hop.setLocationName("some name...");
         hop.setLocationCoordinates(geoCoordinate);
-        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
+        at.fhtw.swen3.persistence.entity.WarehouseNextHops warehouseNextHops = new at.fhtw.swen3.persistence.entity.WarehouseNextHops();
         warehouseNextHops.setTraveltimeMins(123);
         warehouseNextHops.setHop(hop);
 
-        WarehouseNextHopsDto warehouseNextHopsDto = WarehouseNextHopsMapper.INSTANCE.entityToDto(warehouseNextHops);
+        WarehouseNextHops warehouseNextHopsDto = WarehouseNextHopsMapper.INSTANCE.entityToDto(warehouseNextHops);
 
         assertEquals("123",warehouseNextHopsDto.getTraveltimeMins().toString());
         assertEquals("some type...",warehouseNextHopsDto.getHop().getHopType());
@@ -255,21 +261,21 @@ public class EntitiesMappersTest {
     }
     @Test
     public void warehouseNextHopsDtoToWarehouseNextHops(){
-        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+        GeoCoordinate geoCoordinateDto = new GeoCoordinate();
         geoCoordinateDto.setLon(3.3);
         geoCoordinateDto.setLat(4.4);
-        HopDto hopDto = new HopDto();
+        Hop hopDto = new Hop();
         hopDto.setHopType("some type...");
         hopDto.setCode("some code...");
         hopDto.setDescription("some description...");
         hopDto.setProcessingDelayMins(3);
         hopDto.setLocationName("some name...");
         hopDto.setLocationCoordinates(geoCoordinateDto);
-        WarehouseNextHopsDto warehouseNextHopsDto = new WarehouseNextHopsDto();
+        WarehouseNextHops warehouseNextHopsDto = new WarehouseNextHops();
         warehouseNextHopsDto.setTraveltimeMins(123);
         warehouseNextHopsDto.setHop(hopDto);
 
-        WarehouseNextHops warehouseNextHops = WarehouseNextHopsMapper.INSTANCE.dtoToEntity(warehouseNextHopsDto);
+        at.fhtw.swen3.persistence.entity.WarehouseNextHops warehouseNextHops = WarehouseNextHopsMapper.INSTANCE.dtoToEntity(warehouseNextHopsDto);
 
         assertEquals("123",warehouseNextHops.getTraveltimeMins().toString());
         assertEquals("some type...",warehouseNextHops.getHop().getHopType());
@@ -284,26 +290,26 @@ public class EntitiesMappersTest {
     //Warehouse
     @Test
     public void warehouseToWarehouseDto(){
-        GeoCoordinate geoCoordinate = new GeoCoordinate();
+        at.fhtw.swen3.persistence.entity.GeoCoordinate geoCoordinate = new at.fhtw.swen3.persistence.entity.GeoCoordinate();
         geoCoordinate.setLon(3.3);
         geoCoordinate.setLat(4.4);
-        Hop hop = new Hop();
+        at.fhtw.swen3.persistence.entity.Hop hop = new at.fhtw.swen3.persistence.entity.Hop();
         hop.setHopType("some type...");
         hop.setCode("some code...");
         hop.setDescription("some description...");
         hop.setProcessingDelayMins(3);
         hop.setLocationName("some name...");
         hop.setLocationCoordinates(geoCoordinate);
-        WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
+        at.fhtw.swen3.persistence.entity.WarehouseNextHops warehouseNextHops = new at.fhtw.swen3.persistence.entity.WarehouseNextHops();
         warehouseNextHops.setTraveltimeMins(123);
         warehouseNextHops.setHop(hop);
-        List<WarehouseNextHops> warehouseNextHopsList = new ArrayList<>();
+        List<at.fhtw.swen3.persistence.entity.WarehouseNextHops> warehouseNextHopsList = new ArrayList<>();
         warehouseNextHopsList.add(warehouseNextHops);
-        Warehouse warehouse = new Warehouse();
+        at.fhtw.swen3.persistence.entity.Warehouse warehouse = new at.fhtw.swen3.persistence.entity.Warehouse();
         warehouse.setLevel(99);
         warehouse.setNextHops(warehouseNextHopsList);
 
-        WarehouseDto warehouseDto = WarehouseMapper.INSTANCE.entityToDto(warehouse);
+        Warehouse warehouseDto = WarehouseMapper.INSTANCE.entityToDto(warehouse);
 
         assertEquals("99",warehouseDto.getLevel().toString());
         assertEquals("123",warehouseDto.getNextHops().get(0).getTraveltimeMins().toString());
@@ -317,26 +323,26 @@ public class EntitiesMappersTest {
     }
     @Test
     public void warehouseDtoToWarehouse(){
-        GeoCoordinateDto geoCoordinateDto = new GeoCoordinateDto();
+        GeoCoordinate geoCoordinateDto = new GeoCoordinate();
         geoCoordinateDto.setLon(3.3);
         geoCoordinateDto.setLat(4.4);
-        HopDto hopDto = new HopDto();
+        Hop hopDto = new Hop();
         hopDto.setHopType("some type...");
         hopDto.setCode("some code...");
         hopDto.setDescription("some description...");
         hopDto.setProcessingDelayMins(3);
         hopDto.setLocationName("some name...");
         hopDto.setLocationCoordinates(geoCoordinateDto);
-        WarehouseNextHopsDto warehouseNextHopsDto = new WarehouseNextHopsDto();
+        WarehouseNextHops warehouseNextHopsDto = new WarehouseNextHops();
         warehouseNextHopsDto.setTraveltimeMins(123);
         warehouseNextHopsDto.setHop(hopDto);
-        List<WarehouseNextHopsDto> warehouseNextHopsDtoList = new ArrayList<>();
+        List<WarehouseNextHops> warehouseNextHopsDtoList = new ArrayList<>();
         warehouseNextHopsDtoList.add(warehouseNextHopsDto);
-        WarehouseDto warehouseDto = new WarehouseDto();
+        Warehouse warehouseDto = new Warehouse();
         warehouseDto.setLevel(99);
         warehouseDto.setNextHops(warehouseNextHopsDtoList);
 
-        Warehouse warehouse = WarehouseMapper.INSTANCE.dtoToEntity(warehouseDto);
+        at.fhtw.swen3.persistence.entity.Warehouse warehouse = WarehouseMapper.INSTANCE.dtoToEntity(warehouseDto);
 
         assertEquals("99",warehouse.getLevel().toString());
         assertEquals("123",warehouse.getNextHops().get(0).getTraveltimeMins().toString());

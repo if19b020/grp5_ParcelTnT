@@ -16,15 +16,15 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-09-24T14:06:20.958Z[GMT]")
 
 
-public class WarehouseDto extends HopDto {
+public class Warehouse extends Hop {
   @JsonProperty("level")
   private Integer level = null;
 
   @JsonProperty("nextHops")
   @Valid
-  private List<WarehouseNextHopsDto> nextHops = new ArrayList<WarehouseNextHopsDto>();
+  private List<WarehouseNextHops> nextHops = new ArrayList<WarehouseNextHops>();
 
-  public WarehouseDto level(Integer level) {
+  public Warehouse level(Integer level) {
     this.level = level;
     return this;
   }
@@ -44,12 +44,12 @@ public class WarehouseDto extends HopDto {
     this.level = level;
   }
 
-  public WarehouseDto nextHops(List<WarehouseNextHopsDto> nextHops) {
+  public Warehouse nextHops(List<WarehouseNextHops> nextHops) {
     this.nextHops = nextHops;
     return this;
   }
 
-  public WarehouseDto addNextHopsItem(WarehouseNextHopsDto nextHopsItem) {
+  public Warehouse addNextHopsItem(WarehouseNextHops nextHopsItem) {
     this.nextHops.add(nextHopsItem);
     return this;
   }
@@ -61,11 +61,11 @@ public class WarehouseDto extends HopDto {
   @Schema(required = true, description = "Next hops after this warehouse (warehouses or trucks).")
       @NotNull
     @Valid
-    public List<WarehouseNextHopsDto> getNextHops() {
+    public List<WarehouseNextHops> getNextHops() {
     return nextHops;
   }
 
-  public void setNextHops(List<WarehouseNextHopsDto> nextHops) {
+  public void setNextHops(List<WarehouseNextHops> nextHops) {
     this.nextHops = nextHops;
   }
 
@@ -78,7 +78,7 @@ public class WarehouseDto extends HopDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WarehouseDto warehouse = (WarehouseDto) o;
+    Warehouse warehouse = (Warehouse) o;
     return Objects.equals(this.level, warehouse.level) &&
         Objects.equals(this.nextHops, warehouse.nextHops) &&
         super.equals(o);
