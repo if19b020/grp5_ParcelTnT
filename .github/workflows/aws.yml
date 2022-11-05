@@ -1,5 +1,5 @@
 #Workflow name
-name: CD Pipeline
+name: CD Pipeline to AWS
 on:
   #Manually trigger workflow runs
   workflow_dispatch:
@@ -93,8 +93,8 @@ jobs:
           aws_secret_key: NJTm6c5zif5148DPXoff6LPzqWFlKN62MpwUMQKN
           aws_session_token: FwoGZXIvYXdzEB0aDNTMkughXogm6T1CySLLAUowdiD37G0uaUF9vxUUetN9QewaEeTafAWXdKQi+7vKc1MHMXg7hWE/W7XBF749dYm/Ng2NruhfNSI5hwH4gaR0WdxyLGN6o/giX9Vdx1eC7QbIKQH+rG4baswW1xuy9+4qREvzKPC72IzBDyA6bsasmw8/Jgvc2R6a2FxOft22jIQB+BN9BrhJC3ikGYbeS37nqsefNQZnxDypr2sAjv2SRw7+jgjYOPb9YZKS83u/iC7IGiSdY4P0nvrOTosxBm0FBWHyFNDIx38kKIzxmpsGMi0AFsF5eFaQwu52cfYCM5Bc+XRXcALAVCvJq/wy81hxqiV6wJzmcSGH8zSwjz0=
           use_existing_version_if_available: false
-          application_name: spring-boot-deploy
-          environment_name: Springbootdeploy-env
+          application_name: ParcelTnT
+          environment_name: Parceltnt-env
           version_label: ${{github.SHA}}
           region: us-east-1
           deployment_package: swagger-spring-1.0.0.jar
