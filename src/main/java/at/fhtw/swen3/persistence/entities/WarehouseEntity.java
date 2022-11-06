@@ -11,8 +11,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "error")
 public class WarehouseEntity {
     private Integer level = null;
     @NotNull

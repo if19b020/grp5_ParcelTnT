@@ -8,8 +8,6 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "error")
 public class TransferwarehouseEntity {
     private String regionGeoJson = null;
     private String logisticsPartner = null;

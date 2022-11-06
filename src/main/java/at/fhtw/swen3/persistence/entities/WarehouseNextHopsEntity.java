@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "error")
 public class WarehouseNextHopsEntity {
     private Integer traveltimeMins = null;
     @NotNull

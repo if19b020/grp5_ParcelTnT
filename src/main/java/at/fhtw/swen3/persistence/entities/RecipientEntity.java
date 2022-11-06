@@ -9,8 +9,6 @@ import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "error")
 public class RecipientEntity {
     @Pattern(regexp = "^[A-Z][A-Za-z-]+$")
     private String name = null;
