@@ -1,16 +1,15 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.HopEntity;
+import at.fhtw.swen3.persistence.entities.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entities.HopEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Hop;
-
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:59:40+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
+    date = "2022-11-06T13:05:20+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class HopMapperImpl implements HopMapper {
 
@@ -27,7 +26,7 @@ public class HopMapperImpl implements HopMapper {
         hopEntity.setDescription( hop.getDescription() );
         hopEntity.setProcessingDelayMins( hop.getProcessingDelayMins() );
         hopEntity.setLocationName( hop.getLocationName() );
-        hopEntity.setLocationCoordinates( geoCoordinateDtoToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
+        hopEntity.setLocationCoordinates( geoCoordinateToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
 
         return hopEntity;
     }
@@ -38,19 +37,19 @@ public class HopMapperImpl implements HopMapper {
             return null;
         }
 
-        Hop hopDto = new Hop();
+        Hop hop1 = new Hop();
 
-        hopDto.setHopType( hop.getHopType() );
-        hopDto.setCode( hop.getCode() );
-        hopDto.setDescription( hop.getDescription() );
-        hopDto.setProcessingDelayMins( hop.getProcessingDelayMins() );
-        hopDto.setLocationName( hop.getLocationName() );
-        hopDto.setLocationCoordinates( geoCoordinateEntityToGeoCoordinateDto( hop.getLocationCoordinates() ) );
+        hop1.setHopType( hop.getHopType() );
+        hop1.setCode( hop.getCode() );
+        hop1.setDescription( hop.getDescription() );
+        hop1.setProcessingDelayMins( hop.getProcessingDelayMins() );
+        hop1.setLocationName( hop.getLocationName() );
+        hop1.setLocationCoordinates( geoCoordinateEntityToGeoCoordinate( hop.getLocationCoordinates() ) );
 
-        return hopDto;
+        return hop1;
     }
 
-    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinateEntity geoCoordinateToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
@@ -63,7 +62,7 @@ public class HopMapperImpl implements HopMapper {
         return geoCoordinateEntity;
     }
 
-    protected GeoCoordinate geoCoordinateEntityToGeoCoordinateDto(GeoCoordinateEntity geoCoordinateEntity) {
+    protected GeoCoordinate geoCoordinateEntityToGeoCoordinate(GeoCoordinateEntity geoCoordinateEntity) {
         if ( geoCoordinateEntity == null ) {
             return null;
         }

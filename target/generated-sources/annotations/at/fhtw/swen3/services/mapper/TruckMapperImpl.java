@@ -1,14 +1,13 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.TruckEntity;
+import at.fhtw.swen3.persistence.entities.TruckEntity;
 import at.fhtw.swen3.services.dto.Truck;
-
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:59:40+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
+    date = "2022-11-06T13:05:21+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class TruckMapperImpl implements TruckMapper {
 
@@ -32,11 +31,11 @@ public class TruckMapperImpl implements TruckMapper {
             return null;
         }
 
-        Truck truckDto = new Truck();
+        Truck truck1 = new Truck();
 
-        truckDto.setRegionGeoJson( truck.getRegionGeoJson() );
-        truckDto.setNumberPlate( truck.getNumberPlate() );
+        truck1.setRegionGeoJson( truck.getRegionGeoJson() );
+        truck1.setNumberPlate( truck.getNumberPlate() );
 
-        return truckDto;
+        return truck1;
     }
 }

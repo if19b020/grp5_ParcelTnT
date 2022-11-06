@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.*;
-import at.fhtw.swen3.persistence.entity.ErrorEntity;
+import at.fhtw.swen3.persistence.entities.*;
+import at.fhtw.swen3.persistence.entities.ErrorEntity;
 import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.services.dto.Error;
 import org.junit.Test;

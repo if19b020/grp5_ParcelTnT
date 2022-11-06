@@ -1,14 +1,13 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entities.GeoCoordinateEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
-
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:59:40+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
+    date = "2022-11-06T13:05:21+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class GeoCoordinateMapperImpl implements GeoCoordinateMapper {
 
@@ -32,11 +31,11 @@ public class GeoCoordinateMapperImpl implements GeoCoordinateMapper {
             return null;
         }
 
-        GeoCoordinate geoCoordinateDto = new GeoCoordinate();
+        GeoCoordinate geoCoordinate1 = new GeoCoordinate();
 
-        geoCoordinateDto.setLat( geoCoordinate.getLat() );
-        geoCoordinateDto.setLon( geoCoordinate.getLon() );
+        geoCoordinate1.setLat( geoCoordinate.getLat() );
+        geoCoordinate1.setLon( geoCoordinate.getLon() );
 
-        return geoCoordinateDto;
+        return geoCoordinate1;
     }
 }

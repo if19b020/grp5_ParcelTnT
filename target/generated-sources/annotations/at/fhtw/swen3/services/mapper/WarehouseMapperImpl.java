@@ -1,22 +1,21 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.HopEntity;
-import at.fhtw.swen3.persistence.entity.WarehouseEntity;
-import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
+import at.fhtw.swen3.persistence.entities.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entities.HopEntity;
+import at.fhtw.swen3.persistence.entities.WarehouseEntity;
+import at.fhtw.swen3.persistence.entities.WarehouseNextHopsEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Hop;
 import at.fhtw.swen3.services.dto.Warehouse;
 import at.fhtw.swen3.services.dto.WarehouseNextHops;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:59:40+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
+    date = "2022-11-06T13:05:21+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class WarehouseMapperImpl implements WarehouseMapper {
 
@@ -29,7 +28,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         WarehouseEntity warehouseEntity = new WarehouseEntity();
 
         warehouseEntity.setLevel( warehouseDto.getLevel() );
-        warehouseEntity.setNextHops( warehouseNextHopsDtoListToWarehouseNextHopsEntityList( warehouseDto.getNextHops() ) );
+        warehouseEntity.setNextHops( warehouseNextHopsListToWarehouseNextHopsEntityList( warehouseDto.getNextHops() ) );
 
         return warehouseEntity;
     }
@@ -40,15 +39,15 @@ public class WarehouseMapperImpl implements WarehouseMapper {
             return null;
         }
 
-        Warehouse warehouseDto = new Warehouse();
+        Warehouse warehouse1 = new Warehouse();
 
-        warehouseDto.setLevel( warehouse.getLevel() );
-        warehouseDto.setNextHops( warehouseNextHopsEntityListToWarehouseNextHopsDtoList( warehouse.getNextHops() ) );
+        warehouse1.setLevel( warehouse.getLevel() );
+        warehouse1.setNextHops( warehouseNextHopsEntityListToWarehouseNextHopsList( warehouse.getNextHops() ) );
 
-        return warehouseDto;
+        return warehouse1;
     }
 
-    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinateEntity geoCoordinateToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
@@ -61,7 +60,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return geoCoordinateEntity;
     }
 
-    protected HopEntity hopDtoToHopEntity(Hop hop) {
+    protected HopEntity hopToHopEntity(Hop hop) {
         if ( hop == null ) {
             return null;
         }
@@ -73,12 +72,12 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         hopEntity.setDescription( hop.getDescription() );
         hopEntity.setProcessingDelayMins( hop.getProcessingDelayMins() );
         hopEntity.setLocationName( hop.getLocationName() );
-        hopEntity.setLocationCoordinates( geoCoordinateDtoToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
+        hopEntity.setLocationCoordinates( geoCoordinateToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
 
         return hopEntity;
     }
 
-    protected WarehouseNextHopsEntity warehouseNextHopsDtoToWarehouseNextHopsEntity(WarehouseNextHops warehouseNextHops) {
+    protected WarehouseNextHopsEntity warehouseNextHopsToWarehouseNextHopsEntity(WarehouseNextHops warehouseNextHops) {
         if ( warehouseNextHops == null ) {
             return null;
         }
@@ -86,25 +85,25 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         WarehouseNextHopsEntity warehouseNextHopsEntity = new WarehouseNextHopsEntity();
 
         warehouseNextHopsEntity.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
-        warehouseNextHopsEntity.setHop( hopDtoToHopEntity( warehouseNextHops.getHop() ) );
+        warehouseNextHopsEntity.setHop( hopToHopEntity( warehouseNextHops.getHop() ) );
 
         return warehouseNextHopsEntity;
     }
 
-    protected List<WarehouseNextHopsEntity> warehouseNextHopsDtoListToWarehouseNextHopsEntityList(List<WarehouseNextHops> list) {
+    protected List<WarehouseNextHopsEntity> warehouseNextHopsListToWarehouseNextHopsEntityList(List<WarehouseNextHops> list) {
         if ( list == null ) {
             return null;
         }
 
         List<WarehouseNextHopsEntity> list1 = new ArrayList<WarehouseNextHopsEntity>( list.size() );
         for ( WarehouseNextHops warehouseNextHops : list ) {
-            list1.add( warehouseNextHopsDtoToWarehouseNextHopsEntity(warehouseNextHops) );
+            list1.add( warehouseNextHopsToWarehouseNextHopsEntity( warehouseNextHops ) );
         }
 
         return list1;
     }
 
-    protected GeoCoordinate geoCoordinateEntityToGeoCoordinateDto(GeoCoordinateEntity geoCoordinateEntity) {
+    protected GeoCoordinate geoCoordinateEntityToGeoCoordinate(GeoCoordinateEntity geoCoordinateEntity) {
         if ( geoCoordinateEntity == null ) {
             return null;
         }
@@ -117,7 +116,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         return geoCoordinate;
     }
 
-    protected Hop hopEntityToHopDto(HopEntity hopEntity) {
+    protected Hop hopEntityToHop(HopEntity hopEntity) {
         if ( hopEntity == null ) {
             return null;
         }
@@ -129,12 +128,12 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         hop.setDescription( hopEntity.getDescription() );
         hop.setProcessingDelayMins( hopEntity.getProcessingDelayMins() );
         hop.setLocationName( hopEntity.getLocationName() );
-        hop.setLocationCoordinates( geoCoordinateEntityToGeoCoordinateDto( hopEntity.getLocationCoordinates() ) );
+        hop.setLocationCoordinates( geoCoordinateEntityToGeoCoordinate( hopEntity.getLocationCoordinates() ) );
 
         return hop;
     }
 
-    protected WarehouseNextHops warehouseNextHopsEntityToWarehouseNextHopsDto(WarehouseNextHopsEntity warehouseNextHopsEntity) {
+    protected WarehouseNextHops warehouseNextHopsEntityToWarehouseNextHops(WarehouseNextHopsEntity warehouseNextHopsEntity) {
         if ( warehouseNextHopsEntity == null ) {
             return null;
         }
@@ -142,19 +141,19 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
 
         warehouseNextHops.setTraveltimeMins( warehouseNextHopsEntity.getTraveltimeMins() );
-        warehouseNextHops.setHop( hopEntityToHopDto( warehouseNextHopsEntity.getHop() ) );
+        warehouseNextHops.setHop( hopEntityToHop( warehouseNextHopsEntity.getHop() ) );
 
         return warehouseNextHops;
     }
 
-    protected List<WarehouseNextHops> warehouseNextHopsEntityListToWarehouseNextHopsDtoList(List<WarehouseNextHopsEntity> list) {
+    protected List<WarehouseNextHops> warehouseNextHopsEntityListToWarehouseNextHopsList(List<WarehouseNextHopsEntity> list) {
         if ( list == null ) {
             return null;
         }
 
         List<WarehouseNextHops> list1 = new ArrayList<WarehouseNextHops>( list.size() );
         for ( WarehouseNextHopsEntity warehouseNextHopsEntity : list ) {
-            list1.add( warehouseNextHopsEntityToWarehouseNextHopsDto( warehouseNextHopsEntity ) );
+            list1.add( warehouseNextHopsEntityToWarehouseNextHops( warehouseNextHopsEntity ) );
         }
 
         return list1;

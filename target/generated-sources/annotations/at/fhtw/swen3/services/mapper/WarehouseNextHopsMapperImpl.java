@@ -1,18 +1,17 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.HopEntity;
-import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
+import at.fhtw.swen3.persistence.entities.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entities.HopEntity;
+import at.fhtw.swen3.persistence.entities.WarehouseNextHopsEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Hop;
 import at.fhtw.swen3.services.dto.WarehouseNextHops;
-
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-02T20:59:40+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
+    date = "2022-11-06T13:05:21+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
 
@@ -25,7 +24,7 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         WarehouseNextHopsEntity warehouseNextHopsEntity = new WarehouseNextHopsEntity();
 
         warehouseNextHopsEntity.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
-        warehouseNextHopsEntity.setHop( hopDtoToHopEntity( warehouseNextHops.getHop() ) );
+        warehouseNextHopsEntity.setHop( hopToHopEntity( warehouseNextHops.getHop() ) );
 
         return warehouseNextHopsEntity;
     }
@@ -36,15 +35,15 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
             return null;
         }
 
-        WarehouseNextHops warehouseNextHopsDto = new WarehouseNextHops();
+        WarehouseNextHops warehouseNextHops1 = new WarehouseNextHops();
 
-        warehouseNextHopsDto.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
-        warehouseNextHopsDto.setHop( hopEntityToHopDto( warehouseNextHops.getHop() ) );
+        warehouseNextHops1.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
+        warehouseNextHops1.setHop( hopEntityToHop( warehouseNextHops.getHop() ) );
 
-        return warehouseNextHopsDto;
+        return warehouseNextHops1;
     }
 
-    protected GeoCoordinateEntity geoCoordinateDtoToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
+    protected GeoCoordinateEntity geoCoordinateToGeoCoordinateEntity(GeoCoordinate geoCoordinate) {
         if ( geoCoordinate == null ) {
             return null;
         }
@@ -57,7 +56,7 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         return geoCoordinateEntity;
     }
 
-    protected HopEntity hopDtoToHopEntity(Hop hop) {
+    protected HopEntity hopToHopEntity(Hop hop) {
         if ( hop == null ) {
             return null;
         }
@@ -69,12 +68,12 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         hopEntity.setDescription( hop.getDescription() );
         hopEntity.setProcessingDelayMins( hop.getProcessingDelayMins() );
         hopEntity.setLocationName( hop.getLocationName() );
-        hopEntity.setLocationCoordinates( geoCoordinateDtoToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
+        hopEntity.setLocationCoordinates( geoCoordinateToGeoCoordinateEntity( hop.getLocationCoordinates() ) );
 
         return hopEntity;
     }
 
-    protected GeoCoordinate geoCoordinateEntityToGeoCoordinateDto(GeoCoordinateEntity geoCoordinateEntity) {
+    protected GeoCoordinate geoCoordinateEntityToGeoCoordinate(GeoCoordinateEntity geoCoordinateEntity) {
         if ( geoCoordinateEntity == null ) {
             return null;
         }
@@ -87,7 +86,7 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         return geoCoordinate;
     }
 
-    protected Hop hopEntityToHopDto(HopEntity hopEntity) {
+    protected Hop hopEntityToHop(HopEntity hopEntity) {
         if ( hopEntity == null ) {
             return null;
         }
@@ -99,7 +98,7 @@ public class WarehouseNextHopsMapperImpl implements WarehouseNextHopsMapper {
         hop.setDescription( hopEntity.getDescription() );
         hop.setProcessingDelayMins( hopEntity.getProcessingDelayMins() );
         hop.setLocationName( hopEntity.getLocationName() );
-        hop.setLocationCoordinates( geoCoordinateEntityToGeoCoordinateDto( hopEntity.getLocationCoordinates() ) );
+        hop.setLocationCoordinates( geoCoordinateEntityToGeoCoordinate( hopEntity.getLocationCoordinates() ) );
 
         return hop;
     }
