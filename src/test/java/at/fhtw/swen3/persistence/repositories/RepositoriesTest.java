@@ -13,9 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
-@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+//@RunWith(SpringRunner.class)
+//@DataJpaTest
+//@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+@SpringBootTest
 public class RepositoriesTest {
 
     @Autowired private ErrorRepository errorRepository;

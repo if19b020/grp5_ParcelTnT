@@ -8,10 +8,10 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "error")
+//@Entity
+//@Table(name = "error")
 public class ErrorEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String errorMessage = null;
 
 }
